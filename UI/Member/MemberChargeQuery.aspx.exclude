@@ -1,0 +1,143 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MemberChargeQuery.aspx.cs" Inherits=" MemberChargeQuery" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>会员查询</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css">
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+     <script type="text/javascript" src="../dateChange.js"></script>
+    <script type="text/javascript">
+       
+
+
+        function myformatterDa(date) {
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            var d = date.getDate();
+            return (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+        }
+        function myformatter(date) {
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            var d = date.getDate();
+            return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+        }
+        function myparser(s) {
+            if (!s) return new Date();
+            var ss = (s.split('-'));
+            var y = parseInt(ss[0], 10);
+            var m = parseInt(ss[1], 10);
+            var d = parseInt(ss[2], 10);
+            if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+                return new Date(y, m - 1, d);
+            } else {
+                return new Date();
+            }
+        }
+ 
+        function myformatter(date) {
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            var d = date.getDate();
+            return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+        }
+        function myparser(s) {
+            if (!s) return new Date();
+            var ss = (s.split('-'));
+            var y = parseInt(ss[0], 10);
+            var m = parseInt(ss[1], 10);
+            var d = parseInt(ss[2], 10);
+            if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+                return new Date(y, m - 1, d);
+            } else {
+                return new Date();
+            }
+        }
+        function submitForm() {
+
+            $('#dg').datagrid('load', {
+              MemberName: $('#MemberName').val(),
+                MemberCardNo: $('#MemberCardNo').val(),
+                CardType: $('#CardType').datebox('getValue'),
+                IdCard: $('#IdCard').val(),
+                BirthDay: $('#BirthDay').datebox('getValue'),
+                Validate: $('#Validate').datebox('getValue'), 
+                HomeTelphone: $('#HomeTelphone').val(),
+                Mobile: $('#Mobile').val(),
+                Status: $('#Status').datebox('getValue'),
+                Address: $('#Address').val(),
+                RegTime: $('#RegTime').datebox('getValue')
+            });
+ 
+        }
+
+
+        
+    </script>
+</head>
+<body class="easyui-layout" style="padding: 2px">
+    <div class="easyui-panel" title="充值记录查询">
+    
+
+           <div id="ff" style="padding: 10px 10px 10px 10px">
+             
+            <table >
+                <tr>
+                    <td style="margin-right: 10px">
+                        开始时间:
+                    </td>
+                    <td>
+                        <input class="easyui-datetimebox" type="text" name="StartTime" id="StartTime"></input>
+                    </td>
+                    
+                </tr>
+                 <tr>
+                    
+                    
+                    <td>
+                        结束时间：
+                    </td>
+                    <td>
+                        <input class="easyui-datetimebox" type="text" name="EndTime" id="Text2" >
+                    </td>
+                      
+                </tr>
+                 <tr>
+                     
+                      <td style="margin-right: 10px">
+                      收银员:
+                    </td>
+                    <td>
+                           <input class="easyui-combobox" name="ChargePeople" data-options="valueField:'ID',textField:'fkfs',url:'/MemberData.aspx?module=searchsyy&action=read'"/>
+         
+                   </td>
+                </tr>
+            
+                 <tr>
+                   
+                    
+                     
+                    <td style="width: 80px;" align="right">
+                        <a href="javascript:void(0)" class="easyui-linkbutton"  onclick="submitForm()">查询</a>
+                    </td>
+                    <td style="width: 80px;" align="right">
+                        <a href="javascript:void(0)" class="easyui-linkbutton"  onclick="window.close();">取消</a>
+                    </td>
+                    
+                </tr>
+            </table>         
+        </div>
+      
+  </div>
+     
+
+       
+   
+  
+   
+</body>
+</html>

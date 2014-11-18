@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>客人查询</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../themes/demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+</head>
+<body  class="easyui-layout">
+	<div data-options="region:'center'" style="padding:5px">
+    <!--查询条件-->
+    	<div class="easyui-panel" title="查询条件" style="width:790px">
+		<div style="padding:10px 0 10px 60px">
+	    <form id="ff" method="post">
+	    	<table>
+	    		<tr>
+	    			<td style="width:80px; margin-right:10px">帐号名称</td>
+	    			<td style="width:220px;"><input class="easyui-validatebox" type="text" name="name"></input></td>
+                    <td style="width:80px; margin-right:10px">电话号码</td>
+	    			<td style="width:220px;"><input class="easyui-validatebox" type="text" name="name"></input></td>
+                    <td style="width:80px; margin-right:10px">备注</td>
+	    			<td style="width:220px;"><input class="easyui-validatebox" type="text" name="name"></input></td>
+                </tr>
+	    		<tr>
+	    			<td>客户名称</td>
+                    <td style="width:220px;"><input class="easyui-validatebox" type="text" name="name"></input></td>
+                    <td>客人状态</td>
+                    <td>
+	    				<select class="easyui-combobox" name="language" style="width:140px">
+                            <option value="ar">在店</option>
+                            <option value="bg">退房</option>
+                            <option value="ca">未结离店</option></select>
+	    			</td>
+                    <td>客户类型</td>
+                    <td>
+	    				<select class="easyui-combobox" name="language" style="width:140px">
+                            <option value="ar">散客</option>
+                            <option value="bg">团队</option>
+                            <option value="ca">会议</option>
+                            <option value="zh-cht">旅行社</option>
+                            <option value="cs">其他</option></select>
+	    			</td>
+                </tr>
+	    		<tr>
+	    			<td>车牌号</td>
+	    			<td><input class="easyui-validatebox" type="text" name="name"></input></td>	
+                    <td>证件号码</td>
+	    			<td><input class="easyui-validatebox" type="text" name="name"></input></td>	
+	    			<td>来店日期</td>
+	    			<td><input class="easyui-datetimebox" style="width:140px"></td>
+                </tr>
+	    		<tr>
+                    <td>房间级别</td>
+                    <td>
+	    				<select class="easyui-combobox" name="language" style="width:140px">
+                            <option value="ar">标准间</option>
+                            <option value="bg">豪华间</option>
+                            <option value="ca">单人房</option>
+                            <option value="zh-cht">大床房</option></select>
+	    			</td>
+	    			<td>入住类型</td>
+                    <td>
+                        <select class="easyui-combobox" name="language" style="width:140px">
+                            <option value="ar">正常</option>
+                            <option value="bg">免费</option>
+                            <option value="ca">长包</option>
+                            <option value="zh-cht">钟点</option></select>
+                    </td>
+                    <td>国籍</td>
+                    <td>
+	    				<select class="easyui-combobox" name="language" style="width:140px">
+                            <option value="ar">中国</option>
+                            <option value="bg">美国</option>
+                            <option value="ca">法国</option>
+                            <option value="zh-cht">德国</option>
+                            <option value="cs">俄罗斯</option>
+                            <option value="da">其他</option></select>
+	    			</td>	
+	    		</tr>
+                <tr>
+	    			<td>房号</td>
+	    			<td>
+                        <input class="easyui-validatebox" type="text" name="name"></input>
+	    			</td>
+                    <td>销售人员</td>
+                    <td>
+                    	<select class="easyui-combobox" name="language" style="width:140px">
+                        </select></td>	
+	    			<td>离店日期</td>
+	    			<td><input class="easyui-datetimebox" style="width:140px"></td>		
+	    		</tr>
+                <tr>
+                    <td>主帐房号</td>
+                    <td><input class="easyui-validatebox" type="text" name="name"></input></td>	
+	    			<td>操作员</td>
+	    			<td>
+	    				<select class="easyui-combobox" name="language" style="width:140px">
+                            <option value="ar">张三</option>
+                            <option value="bg">王五</option></select>
+	    			</td>
+                    <td>住址</td>
+                    <td><input class="easyui-validatebox" type="text" name="name"></input></td>			
+	    		</tr>
+                <tr>
+	    			<td>协议单位</td>
+	    			<td>
+	    				<select class="easyui-combobox" name="language" style="width:140px">
+                            <option value="ar">满座团购</option>
+                            <option value="bg">嘀嗒团购</option></select>
+	    			</td>
+	    			<td>付款方式</td>
+	    			<td>
+	    				<select class="easyui-combobox" name="language" style="width:140px">
+                            <option value="ar">现金</option>
+                            <option value="bg">信用卡</option></select>
+	    			</td>
+                    <td>会员卡号</td>
+                    <td><input class="easyui-validatebox" type="text" name="name"></input></td>			
+	    		</tr>
+	    	</table>
+	    </form>
+	    </div>
+	    </div>
+    <!--查询结果-->
+        <div class="easyui-panel" title="查询结果" style="width:790px">
+	    <table class="easyui-datagrid" style="width:3520px;height:200px">
+		<thead>
+			<tr>
+				<th data-options="field:'itemid',width:80">房间级别</th>
+				<th data-options="field:'productid',width:80">入住类型</th>
+				<th data-options="field:'listprice',width:80,align:'center'">房间号</th>
+				<th data-options="field:'unitcost',width:80,align:'center'">客户名称1</th>
+				<th data-options="field:'attr1',width:80">性别</th>
+				<th data-options="field:'status',width:80,align:'center'">客人状态</th>
+                <th data-options="field:'status',width:80,align:'center'">到店日期</th>
+                <th data-options="field:'status',width:80,align:'center'">离店日期</th>
+                <th data-options="field:'status',width:80,align:'center'">押金</th>
+                <th data-options="field:'status',width:80,align:'center'">房间单价</th>
+                <th data-options="field:'status',width:80,align:'center'">实际租金</th>
+                <th data-options="field:'status',width:80,align:'center'">付款方式</th>
+                <th data-options="field:'status',width:80,align:'center'">特权人</th>
+                <th data-options="field:'status',width:80,align:'center'">折扣率</th>
+                <th data-options="field:'status',width:80,align:'center'">主从</th>
+                <th data-options="field:'status',width:80,align:'center'">主帐房号</th>
+                <th data-options="field:'status',width:80,align:'center'">主帐名称</th>
+                <th data-options="field:'status',width:80,align:'center'">证件类别</th>
+                <th data-options="field:'status',width:80,align:'center'">证件号码1</th>
+                <th data-options="field:'status',width:80,align:'center'">电话号码</th>
+                <th data-options="field:'status',width:80,align:'center'">房卡数量</th>
+                <th data-options="field:'status',width:80,align:'center'">剩余钥匙</th>
+                <th data-options="field:'status',width:80,align:'center'">客户类型</th>
+                <th data-options="field:'status',width:80,align:'center'">会员卡号</th>
+                <th data-options="field:'status',width:80,align:'center'">协议单位</th>
+                <th data-options="field:'status',width:80,align:'center'">保密</th>
+                <th data-options="field:'status',width:80,align:'center'">备注</th>
+                <th data-options="field:'status',width:80,align:'center'">国籍</th>
+                <th data-options="field:'status',width:80,align:'center'">操作员</th>
+                <th data-options="field:'status',width:80,align:'center'">销售员</th>
+                <th data-options="field:'status',width:80,align:'center'">身份证地址1</th>
+                <th data-options="field:'status',width:80,align:'center'">客户名称2</th>
+                <th data-options="field:'status',width:80,align:'center'">身份证号2</th>
+                <th data-options="field:'status',width:80,align:'center'">身份证地址2</th>
+                <th data-options="field:'status',width:80,align:'center'">预订单备注</th>
+                <th data-options="field:'status',width:80,align:'center'">预订单位</th>
+                <th data-options="field:'status',width:80,align:'center'">预订人</th>
+                <th data-options="field:'status',width:80,align:'center'">预订人电话</th>
+                <th data-options="field:'status',width:80,align:'center'">预订日期</th>
+                <th data-options="field:'status',width:80,align:'center'">预订操作员</th>
+                <th data-options="field:'status',width:80,align:'center'">订金</th>
+			</tr>
+		</thead>
+	    </table>   
+    </div>  
+        <table>
+        <tr>
+            <td></td>
+            <td><button style="margin:5px;width:80px;height:30px">检索</button></td>
+            <td><button style="margin:5px;width:80px;height:30px">换房记录</button></td>
+            <td><button style="margin:5px;width:80px;height:30px">帐户明细</button></td>
+            <td><button style="margin:5px;width:80px;height:30px">操作记录</button></td>
+            <td><button style="margin:5px;width:80px;height:30px">导出</button></td>
+            <td><button style="margin:5px;width:90px;height:30px">房价调整表</button></td>
+            <td><button style="margin:5px;width:80px;height:30px">随客查询</button></td>
+            <td><button style="margin:5px;width:80px;height:30px">取消</button></td>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>

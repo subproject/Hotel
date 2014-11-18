@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../themes/icon.css" />
+    <link href="../../css/cashaction/pageformal.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+    <script src="../../src/jquery.json-2.2.min.js" type="text/javascript"></script>
+    <script src="../../locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <script src="../../Hotelmgr.js" type="text/javascript"></script>
+    <script src="../../js/jiezhangaction/PartnaerListaction.js" type="text/javascript"></script>
+</head>
+<body class="easyui-layout">
+    <div region="east" split="true" title="East" class="leftpage buttons">
+        <table>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)" class="positive" onclick="CreateRelation('#tab_partnerlist','#tab_feiyongdetails')">
+                        <img src="../../css/cashaction/imag/apply2.png" alt="" />
+                        确认挂账</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                 <a href="javascript:void(0)" class="positive" onclick="DeleteRelation('#tab_partnerlist','#tab_feiyongdetails')">
+                        <img src="../../css/cashaction/imag/apply2.png" alt="" />
+                        取消挂账</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input id="selrelation_check" type="checkbox" onclick="SelRelationFeiYongListClick()" />查询已挂账
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div region="center" border="true" style="border-left: 0px; border-right: 0px; overflow: hidden;">
+        <div id="topdiv" class="easyui-panel" title="协议单位" style="background: #fafafa;">
+            <table id="tab_partnerlist">
+            </table>
+        </div>
+        <div id="downdiv" class="easyui-panel" title="费用明细" style="background: #fafafa;">
+            <table id="tab_feiyongdetails">
+            </table>
+        </div>
+    </div>
+</body>
+</html>

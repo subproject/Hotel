@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<title>协议单位结算</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../themes/demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        function ShowAppendMoneyList() {
+
+        }
+        function ShowAppendMoney() {
+
+        }
+        function ShowRunningDetail() {
+
+        }
+    </script>
+</head>
+<body  class="easyui-layout">
+	<div style="padding:2px">
+    <!--中间Grid-->
+	    <table id="dg" class="easyui-datagrid" toolbar="#dgtbr" url="AgreeCompany.ashx?action=read" singleSelect="true">
+		<thead>
+			<tr>
+				<th data-options="field:'AutoID',width:80,align:'right'">协议编号</th>
+				<th data-options="field:'Company',width:80,align:'right'">单位名称</th>
+				<th data-options="field:'ContactMan',width:60">联系人</th>
+				<th data-options="field:'Telphone',width:80,align:'center'">联系电话</th>
+                <th data-options="field:'IsCredit',width:80,align:'center'">是否记帐</th>
+                <th data-options="field:'CreditMoney',width:80,align:'center'">挂账金额</th>
+                <th data-options="field:'CreditLevel',width:80,align:'center'">挂账限额</th>
+                <th data-options="field:'RecvMoney',width:80,align:'center'">已结金额</th>
+                <th data-options="field:'RecvMoney',width:80,align:'center'">未结金额</th>
+                <th data-options="field:'SaleMan',width:80,align:'center'">销售员</th>
+			</tr>
+		</thead>
+	    </table>     
+        <div id="dgtbr">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-sum" plain="true" onclick="ShowRunningDetail()">收款记录</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-sum" plain="true" onclick="ShowAppendMoneyList()">消费记录</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-tip" plain="true" onclick="ShowAppendMoney()">收款</a>
+        </div>
+        <div id="RunningDetail" class="easyui-dialog" closed="true" style="width:500px;height:400px">
+        </div>
+        <div id="AppendMoneyList" class="easyui-dialog" closed="true" style="width:500px;height:400px">
+        </div>
+        <div id="AppendMoney" class="easyui-dialog" closed="true" style="width:500px;height:400px">
+        </div>
+    </div>
+</body>
+</html>

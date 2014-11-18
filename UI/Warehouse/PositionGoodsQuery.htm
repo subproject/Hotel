@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>货位库存查询</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css">
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        var url;
+        var gtTreeUrl = "PositionGoodsQueryData.aspx?action=getPosition";
+        var dgUrl = "PositionGoodsQueryData.aspx?action=getPositionGoods&id=";
+        $("document").ready(function () {
+            var gtTree = $('#gttree');
+            gtTree.tree({
+                url: gtTreeUrl,
+                onSelect: function (node) {
+                    var url = dgUrl + node.id;
+                    $('#dg').datagrid({
+                        url: url,
+                        onLoadSuccess: function (node) {
+                            if (node.rows.length < 1)
+                                return;
+                            for (var i = 0; i < node.rows.length; i++) {
+                                if (typeof (node.rows[i].TotalPrice) != "undefined")
+                                    return;
+                                node.rows[i].TotalPrice = parseFloat(node.rows[i].Price) * parseFloat(node.rows[i].Counts);
+                                node.rows[i].TotalInPrice = parseFloat(node.rows[i].Price) * parseFloat(node.rows[i].TotalInCounts);
+                                node.rows[i].TotalAllocationPrice = parseFloat(node.rows[i].Price) * parseFloat(node.rows[i].TotalAllocationCounts);
+                            }
+                            $('#dg').datagrid("loadData", node.rows);
+                        }
+                    });
+                },
+                onLoadSuccess: function () {
+                }
+            });
+        });
+        function myformatter(val) {
+            return val ? "是" : "否";
+        }
+
+        function printResult() {
+            var rows = $("#dg").datagrid("getRows");
+            if (rows.length < 1) {
+                $.messager.show({
+                    title: 'Error',
+                    msg: "没有要打印的库存数据"
+                });
+                return;
+            }
+            window.open("PositionGoodsQueryPrintPage.html", "print");
+        }
+        function getPrintData() {
+            var rows = $("#dg").datagrid("getRows");
+            return {
+                rows: rows
+            };
+        }
+    </script>
+    <style type="text/css">
+        #fm
+        {
+            margin: 0;
+            padding: 10px 30px;
+        }
+        .ftitle
+        {
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .fitem
+        {
+            margin-bottom: 5px;
+        }
+        .fitem label
+        {
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'west',split:true" title="商品类别" style="width: 170px;">
+        <ul id="gttree" class="easyui-tree">
+        </ul>
+    </div>
+    <div data-options="region:'center',title:'商品信息',iconCls:'icon-ok'">
+        <table id="dg" class="easyui-datagrid" toolbar="#toolbar" pagination="true" rownumbers="true"
+            fitcolumns="true" singleselect="true" style="height: 475px">
+            <thead>
+                <tr>
+                    <th data-options="field:'GoodsName',width:80,align:'center'">
+                        商品名称
+                    </th>
+                    <th data-options="field:'GoodsStyle',width:80,align:'center'">
+                        规格类别
+                    </th>
+                    <th data-options="field:'Unit',width:80">
+                        计量单位
+                    </th>
+                    <th data-options="field:'Price',width:80,align:'center'">
+                        售价
+                    </th>
+                    <th data-options="field:'Counts',width:80,align:'center'">
+                        数量
+                    </th>
+                    <th data-options="field:'TotalPrice',width:80,align:'center'">
+                        库存金额
+                    </th>
+                    <th data-options="field:'TotalInCounts',width:80,align:'center'">
+                        累入数量
+                    </th>
+                    <th data-options="field:'TotalInPrice',width:80,align:'center'">
+                        累入金额
+                    </th>
+                    <th data-options="field:'TotalAllocationCounts',width:80,align:'center'">
+                        累出数量
+                    </th>
+                     <th data-options="field:'TotalAllocationPrice',width:80,align:'center'">
+                        累入金额
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div id="toolbar">
+            <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-print',plain:true" onclick="printResult()" id="btnprint">打印</a>
+        </div>
+    </div>
+</body>
+</html>

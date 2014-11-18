@@ -1,0 +1,187 @@
+﻿<!--HEADER-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        .style3
+        {
+            width: 155px;
+        }
+        .style6
+        {
+            width: 117px;
+        }
+        .contenttable
+        {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .contenttable tr td
+        {
+            text-align: left;
+            border-style: solid;
+            border-color: #000;
+            border-width: 1px;
+            font-size:14px;
+            padding:3px;
+        }
+        .footer
+        {
+            width: 100%;
+            border-collapse: collapse;
+            border: solid 1px #000;
+        }
+        .style17
+        {
+            width: 120px;
+        }
+        .style19
+        {
+            width: 182px;
+        }
+    </style>
+    <style type="text/css" media="print">.noprint { DISPLAY: none }</style>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css" />
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+</head>
+<body>
+    <div style="width:670px;max-width:100%;min-width:1000px;margin:auto">
+    <div class="noprint">
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-print',plain:true" onclick="printDoc()">打印</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="closeWindow()">关闭</a>
+    </div>
+    <table width="100%" style="border-collapse:collapse;">
+        <tr>
+            <td style="text-align: center; font-size: 20px; font-weight: bold">
+                <span style="padding-left:10px;font-size: 20px;">调</span><span style="padding-left:10px;font-size: 20px;">拨</span><span style="padding-left:10px;font-size: 20px;">单</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; font-size:20px; font-weight:bold;height:20px;">
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table width="100%" style="border-collapse:collapse;font-size:14px;">
+                    <tr>
+                        <td valign="bottom" style="text-align:left;width:70px;padding-bottom:10px;">
+                            单据号：
+                        </td>
+                        <td id="outer_levy_no" valign="bottom" style="padding-bottom:10px;">
+                            {data_1}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="bottom" style="text-align:left;width:70px;">
+                            货位：
+                        </td>
+                        <td id="Td1" valign="bottom">
+                            {data_4}
+                        </td>
+                        <td valign="bottom">
+                            日期：<span id="Span2">{data_3}</span>
+                        </td>
+                        <td align="right" valign="bottom">
+                            目标货位：<span id="Span1">{data_5}</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table id="bodyHeader" class="contenttable" width="100%" align="center" style="margin-top:10px;">
+        <tr id="column">
+            <td class="style17" style="width:30%;text-align:center;">
+                商品名称
+            </td>
+            <td class="style6" style="width:15%;text-align:center;">
+                类别
+            </td>
+            <td class="style6" style="width:10%;text-align:center;">
+                单位
+            </td>
+            <td class="style6" style="width:10%;text-align:center;">
+                数量
+            </td>
+            <td class="style6" style="width:10%;text-align:center;">
+                单价
+            </td>
+            <td class="style6" style="width:10%;text-align:center;">
+                金额
+            </td>
+            <td class="style6" style="width:15%;text-align:center;">
+                备注
+            </td>
+        </tr>
+    </table>
+    <!--HEADER-->
+    <!--BODY-->
+    <table id="rows" class="contenttable" width="100%" align="center">
+        <tr id="Tr1">
+            <td id="Td1" style="text-align:center;width:30%;border-right:0px;border-top:0px;">{productname}</td>
+            <td id="Td2" style="text-align:center;width:15%;border-right:0px;border-top:0px;">{listprice}</td>
+            <td id="Td3" style="text-align:center;width:10%;border-right:0px;border-top:0px;">{unitcost}</td>
+            <td id="Td4" style="text-align:center;width:10%;border-right:0px;border-top:0px;">{counts}</td>
+            <td id="Td5" style="text-align:right;width:10%;border-right:0px;border-top:0px;">{inprice}</td>
+            <td id="Td6" style="text-align:right;width:10%;border-right:0px;border-top:0px;">{totalprice}</td>
+            <td id="Td7" style="text-align:center;width:15%;border-top:0px;">{remark}</td>
+        </tr>
+    </table>
+    <!--BODY-->
+    <!--FOOTER-->
+    <table width="100%" style="font-size:14px;">
+        <tr>
+            <td style="height:30px;text-align:right;">制表人：System</td>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>
+<!--FOOTER-->
+<script type="text/javascript">
+    window.onload = function () {
+        var printData = window.opener.getPrintData();
+        var inner = document.body.innerHTML;
+        for (var it in printData) {
+            if (typeof (printData[it]) == "object") {
+                continue;
+            } else {
+                inner = inner.replace(new RegExp("{" + it + "}", "ig"), printData[it]);
+            }
+        }
+        document.body.innerHTML = inner;
+        var temp = document.getElementById("rows");
+        var tempRow = temp.children[0];
+        temp.removeChild(tempRow);
+        var rows = printData["rows"];
+        for (var i = 0; i < rows.length; i++) {
+            var itemInner = tempRow.innerHTML;
+            for (var r in rows[i]) {
+                itemInner = itemInner.replace(new RegExp("{" + r + "}", "ig"), rows[i][r]);
+            }
+            temp.innerHTML += itemInner;
+        }
+    };
+    window.onbeforeunload = function () {
+        event.returnValue = false;
+        return "请确认已经打印完成，是否继续操作?";
+    };
+    function printPreviewDoc() {
+        //window.printPreview();
+        //Web.ExecWB(6, 1)
+        wb.ExecWB(7, 1);
+        //execwb(8, 1);
+    }
+    function printDoc() {
+        window.print();
+    }
+    function closeWindow() {
+        window.close();
+    }
+</script>

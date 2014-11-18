@@ -1,0 +1,412 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>进货录入</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css" />
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        var dataSaved = false;
+        var goodsLst = null;
+        function myformatter(date) {
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            var d = date.getDate();
+            return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+        }
+        function myparser(s) {
+            if (!s) return new Date();
+            var ss = (s.split('-'));
+            var y = parseInt(ss[0], 10);
+            var m = parseInt(ss[1], 10);
+            var d = parseInt(ss[2], 10);
+            if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+                return new Date(y, m - 1, d);
+            } else {
+                return new Date();
+            }
+        }
+
+        var editIndex = undefined;
+        function endEditing() {
+            if (editIndex == undefined) { return true }
+            if ($('#dg').datagrid('validateRow', editIndex)) {
+                var ed = $('#dg').datagrid('getEditor', { index: editIndex, field: 'productid' });
+                var productname = $(ed.target).combobox('getText');
+                $('#dg').datagrid('getRows')[editIndex]['productname'] = productname;
+                $('#dg').datagrid('endEdit', editIndex);
+                editIndex = undefined;
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function onClickRow(index) {
+            if (editIndex != index) {
+                if (endEditing()) {
+                    $('#dg').datagrid('selectRow', index)
+                            .datagrid('beginEdit', index);
+                    editIndex = index;
+                } else {
+                    $('#dg').datagrid('selectRow', editIndex);
+                }
+            }
+        }
+        function append() {
+            if (endEditing()) {
+                $('#dg').datagrid('appendRow', { status: 'P' });
+                editIndex = $('#dg').datagrid('getRows').length - 1;
+                $('#dg').datagrid('selectRow', editIndex)
+                        .datagrid('beginEdit', editIndex);
+                var ed = $('#dg').datagrid('getEditor', { index: editIndex, field: 'productid' });
+                ed.target.combobox("loadData", goodsLst);
+                ed.target.combobox({
+                    onSelect: function (node) {
+                        var $dg = $("#dg");
+                        var ed = $dg.datagrid('getEditor', { index: editIndex, field: 'listprice' });
+                        ed.target.val(node.GoodsStyle);
+                        ed = $dg.datagrid('getEditor', { index: editIndex, field: 'unitcost' });
+                        ed.target.val(node.Unit);
+                    }
+                });
+                //
+                ed = $('#dg').datagrid('getEditor', { index: editIndex, field: 'inprice' });
+                ed.target.bind("keyup", function () {
+                    var counts = $('#dg').datagrid('getEditor', { index: editIndex, field: 'counts' }).target.numberbox("getValue");
+                    $('#dg').datagrid('getEditor', { index: editIndex, field: 'totalprice' }).target.numberbox("setValue", Number(this.value) * counts);
+                })
+                ed = $('#dg').datagrid('getEditor', { index: editIndex, field: 'counts' });
+                ed.target.bind("keyup", function () {
+                    var inprice = $('#dg').datagrid('getEditor', { index: editIndex, field: 'inprice' }).target.numberbox("getValue");
+                    $('#dg').datagrid('getEditor', { index: editIndex, field: 'totalprice' }).target.numberbox("setValue", Number(this.value) * inprice);
+                })
+            }
+        }
+        function removeit() {
+            if (editIndex == undefined) { return }
+            $('#dg').datagrid('cancelEdit', editIndex)
+                    .datagrid('deleteRow', editIndex);
+            editIndex = undefined;
+        }
+        function accept() {
+            if (endEditing()) {
+                $('#dg').datagrid('acceptChanges');
+            }
+        }
+        function reject() {
+            $('#dg').datagrid('rejectChanges');
+            editIndex = undefined;
+        }
+        function getChanges() {
+            var rows = $('#dg').datagrid('getChanges');
+            alert(rows.length + ' rows are changed!');
+        }
+        
+        $("document").ready(function () {
+            //获取订单号
+            $.ajax({
+                type: "get",
+                url: "JinHuoGuanLiData.aspx?action=getOrderId",
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.errorMsg) {
+                        $.messager.show({
+                            title: 'Error',
+                            msg: result.errorMsg
+                        });
+                    } else {
+                        var $orderId = $('#orderid');
+                        var $orderNum = $('#ordernum');
+                        var $sup = $("#supplier");
+                        var $pos = $("#goodsposition");
+                        $orderId.val(result.id);
+                        $orderNum.val(result.ordernum);
+                        //获取供应商
+                        $sup.combobox({
+                            url: "JinHuoGuanLiData.aspx?action=getSupplier",
+                            textField: "text",
+                            valueField: "value",
+                            onLoadSuccess: function () {
+                                var roots = $sup.combobox("getData");
+                                $sup.combobox("setValue", roots[0].value);
+                            }
+                        });
+                        //获取货位
+                        $pos.combobox({
+                            url: "JinHuoGuanLiData.aspx?action=getPosition",
+                            textField: "text",
+                            valueField: "value",
+                            onLoadSuccess: function () {
+                                var roots = $pos.combobox("getData");
+                                $pos.combobox("setValue", roots[0].value);
+                            }
+                        });
+                    }
+                },
+                error: function (result) {
+                    $.messager.show({// show error message
+                        title: 'Error',
+                        msg: result.errorMsg
+                    });
+                }
+            });
+            //获取商品信息
+            $.ajax({
+                type: "get",
+                url: "JinHuoGuanLiData.aspx?action=getProduct",
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.errorMsg) {
+                        $.messager.show({
+                            title: 'Error',
+                            msg: result.errorMsg
+                        });
+                    } else {
+                        goodsLst = result;
+                        //添加初始空行
+                        append();
+                    }
+                },
+                error: function (result) {
+                    $.messager.show({// show error message
+                        title: 'Error',
+                        msg: result.errorMsg
+                    });
+                }
+            });
+//            window.onbeforeunload = function () {
+//                if (!dataSaved) {
+//                    event.returnValue = false;
+//                    return "数据尚未保存，是否继续操作?";
+//                }
+//            };
+        });/**/
+        function saveOrder() {
+            var $dg = $("#dg");
+            if ($dg.datagrid("getRows").length < 1) {
+                $.messager.show({// show error message
+                    title: 'Error',
+                    msg: "请新增商品信息"
+                });
+            } else {
+                $.messager.confirm('Confirm', '确认保存?<br />请确认单据没有错误，点击“确认”保存。', function (r) {
+                    if (!r)
+                        return;
+                    if (!$("#ff").form('validate') || !validateGrid()) {
+                        $.messager.show({// show error message
+                            title: 'Error',
+                            msg: "请确定单据信息是否完整"
+                        });
+                        return;
+                    }
+                        endEditing();
+                        var orderId = $("#orderid").val();
+                        var orderNum = $("#ordernum").val();
+                        var supplier = $("#supplier").combobox("getValue");
+                        var date = $("#date").datebox("getValue");
+                        var goodsPosition = $("#goodsposition").combobox("getValue");
+                        var inserted = $dg.datagrid("getChanges", "inserted");
+                        var deleted = $dg.datagrid('getChanges', "deleted");
+                        var updated = $dg.datagrid('getChanges', "updated");
+                        $.ajax({
+                            type: "post",
+                            url: "JinHuoGuanLiData.aspx?action=saveOrder",
+                            data: {
+                                id: orderId,
+                                ordernum: orderNum,
+                                supplier: supplier,
+                                date: date,
+                                goodsposition: goodsPosition,
+                                inserted: JSON.stringify(inserted),
+                                deleted: JSON.stringify(deleted),
+                                update: JSON.stringify(updated)
+                            },
+                            success: function (r) {
+                                dataSaved = true;
+                                $("#btnsave").linkbutton("disable");
+                                $("#btndelete").linkbutton("enable");
+                                $("#btnprint").linkbutton("enable");
+                                $.messager.show({// show error message
+                                    title: 'Sucess',
+                                    msg: "进货单已保存"
+                                });
+                            },
+                            error: function (r) {
+                                $.messager.show({// show error message
+                                    title: 'Error',
+                                    msg: r.errorMsg
+                                });
+                            }
+                        });
+                });
+            }
+        }
+        function validateGrid() {
+            var $dg = $("#dg");
+            var gridRows = $dg.datagrid("getRows");
+            for (var i = 0; i < gridRows.length; i++) {
+                if (!$dg.datagrid("validateRow", i))
+                    return false;
+            }
+            return true;
+        }
+        function deleteOrder() {
+            var orderId = $("#orderid").val();
+            $.ajax({
+                type: "post",
+                url: "JinHuoGuanLiData.aspx?action=deleteOrder",
+                data: {
+                    id: orderId
+                },
+                success: function (r) {
+                    dataSaved = true;
+                    $("#btnsave").linkbutton("disable");
+                    $("#btndelete").linkbutton("disable");
+                    $("#btnprint").linkbutton("disable");
+                    $.messager.show({// show error message
+                        title: 'Sucess',
+                        msg: "进货单已删除"
+                    });
+                },
+                error: function (r) {
+                    $.messager.show({// show error message
+                        title: 'Error',
+                        msg: r.errorMsg
+                    });
+                }
+            });
+        }
+        function printOrder() {
+            window.open("PrintPage.html", "print");
+        }
+        function getPrintData() {
+            var orderId = $("#orderid").val();
+            var orderNum = $("#ordernum").val();
+            var supplier = $("#supplier").combobox("getText");
+            var date = $("#date").datebox("getValue");
+            var goodsPosition = $("#goodsposition").combobox("getText");
+            var rows = $("#dg").datagrid("getRows");
+            return {
+                data_1: orderNum,
+                data_2: supplier,
+                data_3: date,
+                data_4: goodsPosition,
+                rows: rows
+            };
+        }
+    </script>
+</head>
+<body class="easyui-layout" style="padding: 2px">
+    <div class="easyui-panel" style="padding: 20px 20px 20px 20px">
+        <form id="ff" method="post" runat="server">
+        <table style="width: 100%; padding: 15px">
+            <tr>
+                <td style="text-align: center; color: Red; padding: 10px; font-size: 26px" colspan="8">
+                    进&nbsp; 货&nbsp; 单
+                </td>
+            </tr>
+            <tr>
+                <td style="margin-right: 6px">
+                    单据号：
+                </td>
+                <td>
+                    <input type="hidden" name="orderid" id="orderid"/>
+                    <input class="easyui-validatebox" type="text" name="ordernum" style="width: 120px;border:none;background-color:transparent;" id="ordernum" readonly="readonly"/>
+                </td>
+                <td style="margin-right: 6px">
+                    供应商：
+                </td>
+                <td>
+                    <select class="easyui-combobox" name="supplier" id="supplier" style="width: 120px">
+                        <option value="NULL"></option>
+                        <option value="Delete">注销</option>
+                        <option value="Noramlly">正常 </option>
+                        <option value="lost">挂失</option>
+                    </select>
+                </td>
+                <td style="margin-right: 6px">
+                    日期：
+                </td>
+                <td>
+                    <input class="easyui-datebox" name="date" id="date" data-options="formatter:myformatter,parser:myparser"
+                       value="2014-01-27" style="width: 120px"> </input>
+                </td>
+                <td style="margin-right: 6px">
+                    货位：
+                </td>
+                <td>
+                    <select class="easyui-combobox" name="goodsopsition" id="goodsposition" style="width: 120px">
+                       <!-- <option value="NULL"></option>
+                        <option value="Delete">注销</option>
+                        <option value="Noramlly">正常 </option>
+                        <option value="lost">挂失</option>-->
+                    </select>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>
+    <!--单据详情-->
+    <table id="dg" class="easyui-datagrid" title="Row Editing in DataGrid" style="height: auto"
+        data-options="iconCls: 'icon-edit',
+                singleSelect: true,
+                toolbar: '#tb',
+                url: '../datagrid/datagrid_data1.json',
+                onClickRow: onClickRow">
+        <thead>
+            <tr>
+                <th data-options="field:'itemid',width:50,align:'center'">
+                    ID
+                </th>
+                <th data-options="field:'productid',width:150,
+                        formatter:function(value,row){
+                            return row.productname;
+                        },
+                        editor:{
+                            type:'combobox',
+                            options:{
+                                editable: true,
+                                valueField:'ID',
+                                textField:'GoodsName',
+                                data:null,
+                                required:true
+                            }
+                        },align:'center'">
+                    商品名称
+                </th>
+                <th data-options="field:'listprice',width:80,align:'center',editor:'text'">
+                    规格类别
+                </th>
+                <th data-options="field:'unitcost',width:80,align:'center',editor:'text'">
+                    单位
+                </th>
+                <th data-options="field:'counts',width:80,align:'center',editor:{type:'numberbox',options:{precision:0,required:true}}">
+                    数量
+                </th>
+                <th data-options="field:'inprice',width:80,align:'center',editor:{type:'numberbox',options:{precision:2,required:true}}">
+                    单价
+                </th>
+                <th data-options="field:'totalprice',width:80,align:'center',editor:{type:'numberbox',options:{precision:2,required:true,disabled:true,min:0}}">
+                    金额
+                </th>
+                <th data-options="field:'used',width:100,editor:'text',align:'center'">
+                    用途
+                </th>
+            </tr>
+        </thead>
+    </table>
+    <div id="tb" style="height: auto">
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
+            onclick="append()">新增商品</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-remove',plain:true" onclick="removeit()">删除商品</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-save',plain:true" onclick="saveOrder()" id="btnsave">保存订单</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-remove',plain:true" disabled="disabled" onclick="deleteOrder()" id="btndelete">撤销订单</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-print',plain:true" disabled="disabled" onclick="printOrder()" id="btnprint">打印订单</a>
+    </div>
+</body>
+</html>

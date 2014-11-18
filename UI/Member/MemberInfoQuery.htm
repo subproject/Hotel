@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>充值记录查询</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css" />
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+       <script type="text/javascript" src="../dateChange.js"></script>
+    <script type="text/javascript">
+        var dataSaved = false;
+        function myformatter(date) {
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            var d = date.getDate();
+            return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+        }
+        function myparser(s) {
+            if (!s) return new Date();
+            var ss = (s.split('-'));
+            var y = parseInt(ss[0], 10);
+            var m = parseInt(ss[1], 10);
+            var d = parseInt(ss[2], 10);
+            if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+                return new Date(y, m - 1, d);
+            } else {
+                return new Date();
+            }
+        }
+        function submitForm() {
+
+            $('#dg').datagrid({ url: 'MemberChargeQueryData.aspx?action=queryMemberAll' });
+            $.ajax({
+                type: "post",
+                url: "MemberChargeQueryData.aspx?action=queryMemberConut",
+
+                success: function (r) {
+                    var r = eval('(' + r + ')');
+                    var membercount = $("#membercount");
+                   
+                    membercount.val(r.membercount);
+
+                },
+                error: function (r) {
+                    $.messager.show({// show error message
+                        title: 'Error',
+                        msg: r.errorMsg
+                    });
+                }
+            });
+        }
+        
+
+        
+        function printOrder() {
+            window.open("MemberInfoQueryPrint.html", "print");
+        }
+        function getPrintData() {
+            var membercount = $("#membercount").val();
+             
+            
+            var rows = $("#dg").datagrid("getRows");
+            return {
+                data_1: membercount,
+                 
+                rows: rows
+            };
+        }
+    </script>
+</head>
+
+
+
+<body class="easyui-layout" style="padding: 2px">
+    <div class="easyui-panel" title="会员信息统计表">
+     
+        
+       <div id="tb" style="height: auto">
+        <input type="hidden"  name="membercount" id="membercount"/>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
+            onclick="submitForm()">查询</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-remove',plain:true" onclick="window.close()">取消</a>
+        
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-print',plain:true"  onclick="printOrder()" id="btnprint">打印</a>
+    </div>
+      <div>
+      
+    <table id="dg" class="easyui-datagrid"  style="height: auto"
+        data-options="iconCls: 'icon-edit',
+        toolbar: '#tb',
+                singleSelect: true">
+        <thead>
+            <tr>
+                <th data-options="field:'MemberName',width:50,align:'center'">
+                    会员姓名
+                </th>
+ 
+                <th data-options="field:'MemberCardNo',width:80,align:'center' ">
+                    会员卡号
+                </th>
+                <th data-options="field:'CardType',width:80,align:'center'">
+                    卡类型
+                </th>
+                <th data-options="field:'IdCard',width:80,editor:'text',align:'center'">
+                    身份证号
+                </th>
+                <th data-options="field:'Sex',width:80,editor:'text',align:'center'">
+                    性别
+                </th>
+                <th data-options="field:'Mobile',width:80,editor:'text',align:'center'"  >
+                    联系电话
+                </th>
+                <th data-options="field:'Address',width:100,editor:'text',align:'center'">
+                    地址
+                </th>
+                <th data-options="field:'RegTimeStr',width:100,align:'center'">
+                    注册时间
+                </th>
+            </tr>
+        </thead>
+    </table>
+      </div>
+  </div>
+     
+
+       
+   
+  
+   
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+     <title></title>
+     <script type="text/javascript">
+         //插件安装成功之后，就可以使用这种方式进行检测
+         function Check() {
+             try {
+                 var test = new ActiveXObject("PlugInCard");
+                 if (test == undefined)
+                 { alert("没有安装读卡控件，请安装"); }
+                 else
+                 { return true; }
+             }
+             catch (e) {
+                 alert("获取控件失败:"+e); 
+             }
+         }
+     </script>
+ </head>
+ <body onload="Check();">
+     <object classid="CLSID:1F1CF1EE-AE97-7E7C-4D21-2E4463D0E1C6"
+     codebase="" id="abc" width="0" height="0"></object>
+     <input type="button" value="测试" onclick="javascript:alert(abc.ReadCardNo());" /><!--可是使用这种方式检测插件是否能够成功的调用-->
+ </body>
+ </html>

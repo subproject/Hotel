@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>盘点查询</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css" />
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        function myformatter(date) {
+            var v = date.substring("/Date(".length, date.indexOf("+"));
+            var d = new Date();
+            d.setTime(v);
+            var y = d.getFullYear();
+            var m = d.getMonth() + 1;
+            var d = d.getDate();
+            return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+        }
+        function myparser(s) {
+            if (!s) return new Date();
+            var ss = (s.split('-'));
+            var y = parseInt(ss[0], 10);
+            var m = parseInt(ss[1], 10);
+            var d = parseInt(ss[2], 10);
+            if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+                return new Date(y, m - 1, d);
+            } else {
+                return new Date();                    
+            }
+        }
+        function onClickRow(index) {
+            var selected = $("#gdroder").datagrid("getSelected");
+            $("#dg").datagrid("loadData", selected["RecordList"]);
+            var date = new Date();
+        }
+        
+        $("document").ready(function () {
+            //获取订单号
+            $.ajax({
+                type: "post",
+                url: "PanDianLuRuData.aspx?action=getOrders",
+                data: {
+                    page: 1,
+                    rows: 10000
+                },
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.errorMsg) {
+                        $.messager.show({
+                            title: 'Error',
+                            msg: result.errorMsg
+                        });
+                    } else {
+                        $("#gdroder").datagrid("loadData", result);
+                    }
+                },
+                error: function (result) {
+                    $.messager.show({// show error message
+                        title: 'Error',
+                        msg: result.errorMsg
+                    });
+                },
+                beforeSend: function () {
+                    //这里是开始执行方法，显示效果，效果自己写
+                    $("#gdroder").datagrid("loading");
+                },
+                complete: function () {
+                    //方法执行完毕，效果自己可以关闭，或者隐藏效果
+                    $("#gdroder").datagrid("loaded");
+                },
+            });
+        });/**/
+        
+        function printOrder() {
+            window.open("PrintPage.html", "print");
+        }
+
+        function getPrintData() {
+            var orderId = $("#orderid").val();
+            var orderNum = $("#ordernum").val();
+            var supplier = $("#supplier").combobox("getText");
+            var date = $("#date").datebox("getValue");
+            var goodsPosition = $("#goodsposition").combobox("getText");
+            var rows = $("#dg").datagrid("getRows");
+            return {
+                data_1: orderNum,
+                data_2: supplier,
+                data_3: date,
+                data_4: goodsPosition,
+                rows: rows
+            };
+        }
+    </script>
+</head>
+<body style="padding: 2px">
+    <!--订单主单-->
+    <table id="gdroder" class="easyui-datagrid" title="主单" rownumbers="true" style="height: 330px"
+        data-options="iconCls: 'icon-ok',
+                singleSelect: true,
+                toolbar: '#tborder',
+                onClickRow: onClickRow">
+        <thead>
+            <tr>
+                <th data-options="field:'OrderNum',width:80,align:'center'">
+                     盘点单号
+                </th>
+                <th data-options="field:'Date',width:80,align:'center',editor:'text',formatter:myformatter,parser:myparser">
+                    盘点日期
+                </th>
+                <th data-options="field:'Position',width:80,align:'center',editor:'text'">
+                    货位
+                </th>
+                <th data-options="field:'money',width:80,align:'center',editor:{type:'numberbox',options:{precision:2,required:true}}">
+                    金额  
+                </th>
+                <th data-options="field:'luruDate',width:80,align:'center',editor:{type:'text'},formatter:myformatter,parser:myparser">
+                    录入时间
+                </th>
+                 <th data-options="field:'pandianyuan',width:80,align:'center'">
+                     盘点员
+                </th>
+                   <th data-options="field:'operater',width:80,align:'center'">
+                     操作员
+                </th>
+                   <th data-options="field:'beizhu',width:80,align:'center'">
+                     备注
+                </th>
+            </tr>
+        </thead>
+    </table>
+    <!--单据详情-->
+    <table id="dg" class="easyui-datagrid" title="明细单" rownumbers="true" style="height: auto"
+        data-options="iconCls: 'icon-ok',
+                singleSelect: true,
+                toolbar: '#tb'">
+        <thead>
+            <tr>
+                <th data-options="field:'ProductName'">
+                    商品名称
+                </th>
+                <th data-options="field:'GoodsStyle',width:80,align:'center',editor:'text'">
+                    规格类别
+                </th>
+                <th data-options="field:'Unit',width:80,align:'center',editor:'text'">
+                    单位
+                </th>
+                <th data-options="field:'Counts',width:80,align:'center',editor:{type:'numberbox',options:{precision:0,required:true}}">
+                    账面数量
+                </th>
+                  <th data-options="field:'Counts',width:80,align:'center',editor:{type:'numberbox',options:{precision:0,required:true}}">
+                    实际数量
+                </th>
+                  <th data-options="field:'Counts',width:80,align:'center',editor:{type:'numberbox',options:{precision:0,required:true}}">
+                    数量差额
+                </th>
+                <th data-options="field:'InPrice',width:80,align:'center',editor:{type:'numberbox',options:{precision:2,required:true}}">
+                    单价
+                </th>
+                <th data-options="field:'TotalPrice',width:80,align:'center',editor:{type:'numberbox',options:{precision:2,required:true,disabled:true,min:0}}">
+                    金额
+                </th>
+                <th data-options="field:'Used',width:100,editor:'text',align:'center'">
+                    差额金额
+                </th>
+                  <th data-options="field:'beizhu',width:100,editor:'text',align:'center'">
+                    备注
+                </th>
+            </tr>
+        </thead>
+    </table>
+    <div id="tb" style="height: auto">
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-print',plain:true" disabled="disabled" onclick="printOrder()" id="btnprint">打印订单</a>
+    </div>
+    <div id="tborder" style="height: auto">
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-left',plain:true" disabled="disabled" onclick="printOrder()" id="pageprev">上一页</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-right',plain:true" disabled="disabled" onclick="printOrder()" id="pagenext">下一页</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>商品类别管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css" />
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+       
+        $(document).ready(function () {
+            Intrialization();
+            GetTreeData();
+        });
+        var url;
+        var currdatarow = null;
+        var currnodeid = "";
+        function newType() {
+            $('#dlg').dialog('open').dialog('setTitle', '新增类别');
+            $('#fm').form('clear');
+             var row = $('#dg').treegrid('getSelected');
+             if (row) {
+                 if (row.parentid != "") {
+                     $('#dg').treegrid('select', row.parentid);
+                     var parentrow = $('#dg').treegrid('getSelected');
+                     $('#dg').treegrid('select', row.id);
+                     $("#TypePareName").val(parentrow.TypeName);
+                     $("#TypePareID").val(parentrow.id);
+                 }
+                 url = 'GoodsTypeMgrData.aspx?action=create';
+             }
+             else {
+                 
+                 url = 'GoodsTypeMgrData.aspx?action=create';
+             }
+        }
+        function editType() {
+            var row = $('#dg').treegrid('getSelected');
+            if (row) {
+                $('#dlg').dialog('open').dialog('setTitle', '编辑类别');
+                $('#dg').treegrid('select', row.parentid);
+                var parentrow = $('#dg').treegrid('getSelected');
+                $('#dg').treegrid('select', row.id);
+                $("#TypePareName").val(parentrow.TypeName);
+                $("#TypePareID").val(parentrow.id);
+                $('#fm').form('load', row);
+                url = 'GoodsTypeMgrData.aspx?action=update&ID=' + row.id;
+               
+            }
+        }
+        function saveType() {
+            $('#fm').form('submit', {
+                url: url,
+                onSubmit: function () {
+                    return $(this).form('validate');
+                },
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.errorMsg) {
+                        $.messager.show({
+                            title: 'Error',
+                            msg: result.errorMsg
+                        });
+                    } else {
+                        $('#dlg').dialog('close');        // close the dialog
+                        //$('#dg').datagrid('reload');    // reload the user data
+                        GetTreeData();
+                        currnodeid=result.typeid;
+                       
+                    }
+                }
+            });
+        }
+        function destroyType() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                $.messager.confirm('Confirm', '确认删除?', function (r) {
+                    if (r) {
+                        $.post('GoodsTypeMgrData.aspx?action=delete', { ID: row.id }, function (result) {
+                            if (result.Success) {
+                                GetTreeData();
+                                currnodeid = row.parentid;
+                            } else {
+                                $.messager.show({    // show error message
+                                    title: 'Error',
+                                    msg: "执行失败！"
+                                });
+                            }
+                        }, 'json');
+                    }
+                });
+            }
+        }
+        function Intrialization() {
+            var heightval = $('#dg').parent().parent().parent().parent().height()*0.98;
+            $('#dg').treegrid({
+                title: "商品类别管理",
+                animate: true,
+                rownumbers: true,
+                animate: true,
+                height: heightval,
+                idField: 'id',
+                treeField: 'TypeName',
+                showFooter: true,
+                toolbar: '#toolbar',
+                columns: [[
+                     { title: '物品类型', field: 'TypeName', width: 450 }
+                ]],
+                onBeforeEdit: function (rowData) {
+                },
+                onAfterEdit: function (rowData, changes) {
+                },
+                onCancelEdit: function (rowData) {
+
+                },
+                onSelect: function (rowData) {
+                    currdatarow = rowData;
+                },
+                onBeforeExpand: function (rowData) {
+
+                },
+                onCollapse: function (rowData) {
+
+                },
+                onExpand: function (rowdata) {
+
+                },
+                onLoadSuccess: function (row, data) {
+                    if (currnodeid) {
+                        $('#dg').treegrid('select', currnodeid);
+                        currnodeid = null;
+                    }
+                }
+            });
+        }
+        //获取数据
+        function GetTreeData() {
+            //发送Post请求, 返回后执行回调函数.
+            var paramdata = { "action": 'read' };
+            var Urlstr = "GoodsTypeMgrData.aspx";
+            $("#dg").treegrid("loading");
+            $.post(Urlstr, paramdata,
+               function (data, textStatus) {
+                   try {
+                       dataArray = [eval("(" + data + ")")];
+                       $("#dg").treegrid("loadData", { rows: dataArray[0].Rows });
+                      
+                   }
+                   catch (e) {
+                       alert(e);
+                   }
+                   $("#dg").treegrid("loaded");
+               },
+         "text");
+        }
+    </script>
+    <style type="text/css">
+        #fm
+        {
+            margin: 0;
+            padding: 10px 30px;
+        }
+        .ftitle
+        {
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .fitem
+        {
+            margin-bottom: 5px;
+        }
+        .fitem label
+        {
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+</head>
+<body class="easyui-layout" style="padding: 2px">
+    <table id="dg" class="easyui-treegrid">
+    </table>
+    <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-add" plain="true"
+            onclick="newType()">新增类别</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+                iconcls="icon-edit" plain="true" onclick="editType()">修改类别</a> <a href="javascript:void(0)"
+                    class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroyType()">
+                    删除类别</a>
+    </div>
+    <div id="dlg" class="easyui-dialog" style="width: 400px; height: 280px; padding: 10px 20px"
+        closed="true" buttons="#dlg-buttons">
+        <div class="ftitle">
+            类别信息</div>
+        <!--新增类别-->
+        <form id="fm" method="post" novalidate>
+        <div class="fitem">           
+            <label>
+                上级类别名称:</label>
+            <input id="TypePareName" name="TypePareName" disabled="disabled" class="easyui-validatebox" required="true">
+            <label>
+                类别名称:</label>
+            <input name="TypeName" class="easyui-validatebox" required="true">
+            <input id="TypePareID" name="TypePareID" style=" visibility:hidden;"  class="hidden" required="true">
+        </div>
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-ok" onclick="saveType()">
+            保存</a> <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel"
+                onclick="javascript:$('#dlg').dialog('close')">退出</a>
+    </div>
+</body>
+</html>

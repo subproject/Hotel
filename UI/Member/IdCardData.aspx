@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="IdCardData.aspx.cs" Inherits="Member_IdCardData" %>

@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8">
+	<title>记帐收款查询</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../themes/demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+</head>
+<body  class="easyui-layout">
+    <div style="padding:10px">
+        <div style="width:780px;padding:10px 0 10px 10px">
+            <table>
+	    		<tr>
+	    			<td style="width:80px; margin-right:10px">记帐客户</td>
+	    			<td style="width:180px;"><input class="easyui-validatebox" type="text" name="name" data-options="required:true"></input></td>
+                    <td>&nbsp;</td>
+                </tr>
+            </table>
+        </div>
+    <!--中间Grid-->
+	    <table class="easyui-datagrid" style="width:780px;height:380px">
+		<thead>
+			<tr>
+				<th data-options="field:'listprice',width:80,align:'right'">客户名称</th>
+				<th data-options="field:'unitcost',width:80,align:'right'">付款方式</th>
+				<th data-options="field:'attr1',width:60">总消费</th>
+				<th data-options="field:'status',width:80,align:'center'">已结金额</th>
+                <th data-options="field:'status',width:80,align:'center'">未结金额</th>
+                <th data-options="field:'status',width:80,align:'center'">备注</th>
+                <th data-options="field:'status',width:80,align:'center'">开户日期</th>
+                <th data-options="field:'status',width:80,align:'center'">操作员</th>
+			</tr>
+		</thead>
+	    </table>     
+        <div style="width:780px;padding:10px 0 10px 60px">
+            <table>
+	        <tr>
+                <td></td>
+                <td><button style="margin:5px;width:80px;height:30px">总帐明细</button></td>
+                <td><button style="margin:5px;width:80px;height:30px">收款记录</button></td>
+                <td><button style="margin:5px;width:80px;height:30px">消费记录</button></td>
+                <td><button style="margin:5px;width:80px;height:30px">收款</button></td>
+                <td><button style="margin:5px;width:80px;height:30px">退出</button></td>
+            </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>预订信息查询</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css">
+    <style type="text/css">
+        .ydzrz a.l-btn span.l-btn-left {
+            padding-left: 10px;
+        }
+        
+    </style>
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+       <script type="text/javascript" src="../Hotelmgr.js"></script>
+    <script type="text/javascript">
+        //
+        function ydGuanli() {
+            openwin('FangJianYuDing.aspx', '600', '800'); 
+        }
+        function CancelYd() {
+            var row = $('#tt').datagrid('getSelected');
+            if (row) {
+                $.messager.confirm('Confirm', '确认取消?', function (r) {
+                    if (r) {
+
+                        var strArray = new Array();
+
+                        strArray = row.AssignRoom.split(';');
+
+                        if (strArray.length > 1) {
+                         openwin('CancelYD.aspx?ydnum=' + row.YDNum + '&fh=' + strArray[0], '1000', '800');
+                           
+                          
+                        }
+
+                    }
+                });
+            }
+            else {
+                alert("请先选择预订信息！");
+            }
+        }
+        function YDToRuzhu() {
+            var row = $('#tt').datagrid('getSelected');
+            if (row) {
+                $.messager.confirm('Confirm', '确认转入住?', function (r) {
+                    if (r) {
+
+                        var strArray = new Array();
+
+                        strArray = row.AssignRoom.split(';');
+
+                        if (strArray.length > 1) {
+
+                            openwin('../Register/RegisterByYd.aspx?ydnum=' + row.YDNum + '&fh=' + strArray[0], '1000', '800');
+                           
+                          
+                        }
+
+                    }
+                });
+            }
+            else {
+                alert("请先选择预订信息！");
+            }
+        }
+
+        $(document).ready(function () {
+            //客人类别
+            $("#LX").combobox({
+                url: '../Setting/BasicInfoData.aspx?module=khlb&action=read',
+                valueField: 'ID',
+                textField: 'KHLB',
+                editable: false,
+                onLoadSuccess: function () {
+                    var data = $('#LX').combobox('getData');
+                    if (data.length > 0) {
+                        $("#LX").combobox('select', data[0].ID);
+                    }
+                }
+            });
+            //国籍，默认中国
+            $("#GJ").combobox({
+                url: '../Setting/BasicInfoData.aspx?module=gj&action=read',
+                valueField: 'ID',
+                textField: 'gj',
+                editable: false,
+                onLoadSuccess: function () {
+                    var data = $('#GJ').combobox('getData');
+                    if (data.length > 0) {
+                        $("#GJ").combobox('select', data[1].ID);
+                    }
+                }
+            });
+        });
+        $.fn.datebox.defaults.formatter = function (date) {
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            var d = date.getDate();
+            return y + '-' + m + '-' + d;
+        }
+
+        function doSearch() {
+            $('#tt').datagrid('load', {
+                YDNum: $('#YDNum').val(),
+                Yder: $('#Yder').val(),
+                YdTel: $('#YdTel').val(),
+                Customer: $('#Customer').val(),
+                LX: $('#LX').val(),
+                DW: $('#DW').val(),
+                FH: $('#FH').val(),
+                GJ: $('#GJ').val(),
+                Company: $('#Company').datebox('getValue'),
+                MemberCardNo: $('#MemberCardNo').val(),
+                YDLB: $('#YDLB').datebox('getValue'),
+                DR: $('#DR').datebox('getValue'),
+                LR: $('#LR').datebox('getValue'),
+                YDR: $('#YDR').datebox('getValue')
+            });
+        }
+    </script>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center'" style="padding: 1px">
+        <table class="easyui-datagrid" id="tt" url="YudingChaxunData.aspx?action=read" toolbar="#toolbar"
+            singleselect="true">
+            <thead>
+                <tr>
+                    <th data-options="field:'YDNum'">
+                        预定单编号
+                    </th>
+                    <th data-options="field:'Yder'">
+                        预定人
+                    </th>
+                    <th data-options="field:'YdTel'">
+                        预定人电话
+                    </th>
+                    <th data-options="field:'Customer',align:'center'">
+                        入住人
+                    </th>
+                    <th data-options="field:'OnBoardTime'">
+                        到店日期
+                    </th>
+                    <th data-options="field:'LeaveTime',align:'center'">
+                        离店日期
+                    </th>
+                    <th data-options="field:'MemberCardNo',align:'center'">
+                        会员卡号
+                    </th>
+                    <th data-options="field:'AssignRoom',align:'center'">
+                        是否配房
+                    </th>
+
+
+                    <th data-options="field:'Company',width:80,align:'center'">
+                        协议单位
+                    </th>
+                 <!--   <th data-options="field:'Customer',width:80,align:'center'">
+                        主账
+                    </th>-->
+                    <th data-options="field:'LX',width:80,align:'center'">
+                        客户类型
+                    </th>
+                    <th data-options="field:'GJ',width:80,align:'center'">
+                        国籍
+                    </th>
+                    <th data-options="field:'Yder',width:80,align:'center'">
+                        预订人
+                    </th>
+                    <th data-options="field:'YdTel',width:80,align:'center'">
+                        联系电话
+                    </th>
+                    <th data-options="field:'D_DW',width:80,align:'center'">
+                        预订单位
+                    </th>
+                    <th data-options="field:'D_FKFS',width:80,align:'center'">
+                        预订方式
+                    </th>
+                    <th data-options="field:'D_DJ',width:80,align:'center'">
+                        预订金
+                    </th>
+                    <th data-options="field:'D_BZ',width:80,align:'center'">
+                        备注
+                    </th>
+                    <th data-options="field:'D_RQ',width:80,align:'center'">
+                        预订日期
+                    </th>
+                    <th data-options="field:'S_CZ',width:80,align:'center'">
+                        操作员
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div id="toolbar">
+            <table>
+                <tr>
+                    <td style="width: 60px; margin-right: 10px">
+                        预订单号
+                    </td>
+                    <td style="width: 160px;">
+                        <input class="easyui-validatebox" id="YDNum" type="text" name="YDNum"></input>
+                    </td>
+                    <td style="width: 80px;">
+                        预订人
+                    </td>
+                    <td style="width: 160px;">
+                        <input class="easyui-validatebox" id="Yder" type="text" name="Yder"></input>
+                    </td>
+                    <td style="width: 80px;">
+                        &nbsp;
+                    </td>
+                    <td style="width: 160px">
+                        &nbsp;
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 60px; margin-right: 10px">
+                        客户名称
+                    </td>
+                    <td style="width: 160px;">
+                        <input class="easyui-validatebox" id="Customer" type="text" name="Customer" />
+                    </td>
+                    <td style="width: 80px;">
+                        客户类型
+                    </td>
+                    <td style="width: 160px;">
+                        <input class="easyui-combobox" id="LX" name="LX">
+                    </td>
+                    <td style="width: 80px;">
+                        预订单位
+                    </td>
+                    <td style="width: 160px">
+                        <input class="easyui-validatebox" type="text" name="DW" id="DW" />
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        房间号
+                    </td>
+                    <td style="width: 160px;">
+                        <input class="easyui-validatebox" type="text" name="FH" id="FH" />
+                    </td>
+                    <td>
+                        到店日期
+                    </td>
+                    <td>
+                        <input class="easyui-datebox" type="text"  name="DR" id="DR" />
+                    </td>
+                    <td>
+                        订单类别
+                    </td>
+                    <td>
+                        <select class="easyui-combobox" name="YDLB" id="YDLB">
+                            <option value="0" selected>普通预订</option>
+                            <option value="2">确认预订</option>
+                            <option value="3">已入住</option>
+                            <option value="4">已取消</option>
+                            <option value="1">已超时</option>
+                            <option value="6">全部</option>
+                        </select>
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        联系电话
+                    </td>
+                    <td>
+                        <input class="easyui-validatebox" type="text" name="YdTel" id="YdTel" />
+                    </td>
+                    <td>
+                        国籍
+                    </td>
+                    <td>
+                        <input class="easyui-combobox" id="GJ" name="GJ">
+                    </td>
+                    <td>
+                        协议单位
+                    </td>
+                    <td>
+                        <input class="easyui-combobox" id="Company" name="Company" data-options="valueField:'Name',textField:'Name',url:'../Setting/PartnerData.aspx?action=read'">
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        预订日期
+                    </td>
+                    <td>
+                        <input class="easyui-datebox" name="YDR" id="YDR">
+                    </td>
+                    <td>
+                        离店日期
+                    </td>
+                    <td>
+                        <input class="easyui-datebox" name="LR" id="LR" >
+                    </td>
+                    <td>
+                        会员卡号
+                    </td>
+                    <td>
+                        <input class="easyui-validatebox" type="text" name="MemberCardNo" id="MemberCardNo" />
+                    </td>
+                    <td style="width: 80px">
+                        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="doSearch()">检索</a>
+                    </td>
+                </tr>
+                <tr>
+                <td style="width: 170px" class="ydzrz">
+                   <a href="javascript:void(0)" class="easyui-linkbutton" onclick="YDToRuzhu()">预定转入住</a>
+                    </td>
+                    <td>
+                      <a href="javascript:void(0)" class="easyui-linkbutton" onclick="ydGuanli()">预览预订单</a>
+                    </td>
+                
+                    <td>
+                      <a href="javascript:void(0)" class="easyui-linkbutton" onclick="">导出</a>
+                    </td>
+                    
+                    <td>
+                        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="doSearch()">显示过滤</a>
+                    </td>
+                    <td style="width: 150px">
+                        <a href="javascript:void(0)" class="easyui-linkbutton" onclick="CancelYd()">取消预订</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

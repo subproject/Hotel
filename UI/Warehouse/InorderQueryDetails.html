@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>供应商进货查询</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css" />
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        var dataSaved = false;
+        function myformatter(date) {
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            var d = date.getDate();
+            return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+        }
+        function myparser(s) {
+            if (!s) return new Date();
+            var ss = (s.split('-'));
+            var y = parseInt(ss[0], 10);
+            var m = parseInt(ss[1], 10);
+            var d = parseInt(ss[2], 10);
+            if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+                return new Date(y, m - 1, d);
+            } else {
+                return new Date();
+            }
+        }
+      
+            var ids = request("id");
+            $(document).ready(function () {
+                 
+                $('#dg').datagrid({ url: 'InOrderQueryData.aspx?action=querydetails&id=' + "" + ids + "" });
+            });
+            function request(paras) {
+                
+            var url = location.href;
+            var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+            var paraObj = {}
+            for (i = 0; j = paraString[i]; i++) {
+                paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+            }
+            var returnValue = paraObj[paras.toLowerCase()];
+            if (typeof (returnValue) == "undefined") {
+                return "";
+            } else {
+                return returnValue;
+            }
+        }
+         
+    </script>
+</head>
+
+
+
+<body class="easyui-layout" style="padding: 2px">
+    <div class="easyui-panel" title="供应商进货查询">
+     
+            
+       <div id="tb" style="height: auto">
+          <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-remove',plain:true" onclick="window.close()">退出</a >
+     
+    </div>
+      <div>
+      
+    <table id="dg" class="easyui-datagrid"  style="height: auto"
+        data-options="iconCls: 'icon-edit',
+        toolbar: '#tb',
+                singleSelect: true">
+        <thead>
+            <tr>
+                <th data-options="field:'OrderNum',width:80,align:'center'">
+                    单据号码
+                </th>
+ 
+                <th data-options="field:'Date',width:80,align:'center' ">
+                    日期
+                </th>
+                <th data-options="field:'OrderType',width:80,align:'center'">
+                    单据类型
+                </th>
+                <th data-options="field:'ProductName',width:80,editor:'text',align:'center'">
+                    商品名称
+                </th>
+                <th data-options="field:'Counts',width:80,editor:'text',align:'center'">
+                    数量
+                </th>
+                  <th data-options="field:'InPrice',width:80,editor:'text',align:'center'">
+                    单价
+                </th>
+                <th data-options="field:'TotalMoney',width:80,editor:'text',align:'center'">
+                    金额
+                </th>
+            </tr>
+        </thead>
+    </table>
+      </div>
+  </div>
+     
+
+       
+   
+  
+   
+</body>
+</html>

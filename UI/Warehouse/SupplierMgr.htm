@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>供应商管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css">
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        var url;
+        function newSupplier() {
+            $('#dlg').dialog('open').dialog('setTitle', '新增供应商');
+            $('#fm').form('clear');
+            url = 'SupplierMgrData.aspx?action=create';
+            $("#supplierName").bind("keyup", supplieChange);
+            
+        }
+        function editSupplier() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                $('#dlg').dialog('open').dialog('setTitle', '编辑供应商');
+                $('#fm').form('load', row);
+                url = 'SupplierMgrData.aspx?action=update&ID=' + row.ID;
+                $("#supplierName").unbind("keyup", supplieChange);
+            }
+        }
+        function saveSupplier() {
+            $('#fm').form('submit', {
+                url: url,
+                onSubmit: function () {
+                    return $(this).form('validate');
+                },
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.errorMsg) {
+                        $.messager.show({
+                            title: 'Error',
+                            msg: result.errorMsg
+                        });
+                    } else {
+                        $('#dlg').dialog('close');        // close the dialog
+                        $('#dg').datagrid('reload');    // reload the Supplier data
+                    }
+                }
+            });
+        }
+        function destroySupplier() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                $.messager.confirm('Confirm', '确认删除?', function (r) {
+                    if (r) {
+                        $.post('SupplierMgrData.aspx?action=delete', { ID: row.ID }, function (result) {
+                            if (result.success) {
+                                $('#dg').datagrid('reload');    // reload the Supplier data
+                            } else {
+                                $.messager.show({    // show error message
+                                    title: 'Error',
+                                    msg: result.errorMsg
+                                });
+                            }
+                        }, 'json');
+                    }
+                });
+            }
+        }
+        function supplieChange() {
+            var supplieName = $("#supplierName").val();
+            $("#supplierSimple").val(supplieName);
+        }
+    </script>
+    <style type="text/css">
+        #fm
+        {
+            margin: 0;
+            padding: 10px 30px;
+        }
+        .ftitle
+        {
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .fitem
+        {
+            margin-bottom: 5px;
+        }
+        .fitem label
+        {
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+</head>
+<body class="easyui-layout" style="padding: 2px">
+    <table id="dg" title="供应商管理" class="easyui-datagrid" style="height: 500px" url="SupplierMgrData.aspx?action=read"
+        toolbar="#toolbar" pagination="true" rownumbers="true" fitcolumns="true" singleselect="true">
+        <thead>
+            <tr>
+                <th data-options="field:'ID',width:80">
+                    系统编号
+                </th>
+                <th data-options="field:'SupplierName',width:80">
+                    供应商名称
+                </th>
+                <th data-options="field:'SupplierSimple',width:80">
+                    供应商简称
+                </th>
+                <th data-options="field:'Address',width:80,align:'center'">
+                    地址
+                </th>
+                <th data-options="field:'PostCode',width:80,align:'center'">
+                    邮编
+                </th>
+                <th data-options="field:'Tel',width:80">
+                    电话
+                </th>
+            </tr>
+        </thead>
+    </table>
+    <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-add" plain="true"
+            onclick="newSupplier()">新增</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+                iconcls="icon-edit" plain="true" onclick="editSupplier()">修改</a> <a href="javascript:void(0)"
+                    class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroySupplier()">
+                    删除</a>
+    </div>
+    <div id="dlg" class="easyui-dialog" style="width: 400px; height: 280px; padding: 10px 20px"
+        closed="true" buttons="#dlg-buttons">
+        <div class="ftitle">
+            供应商</div>
+        <!--新增类别-->
+        <form id="fm" method="post" novalidate>
+        <div class="fitem">
+            <label>
+                供应商名称:</label>
+            <input id="supplierName" name="SupplierName" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>
+                供应商简称:</label>
+            <input id="supplierSimple" name="SupplierSimple" class="easyui-validatebox">
+        </div>
+        <div class="fitem">
+            <label>
+                地址:</label>
+            <input name="Address" class="easyui-validatebox">
+        </div>
+        <div class="fitem">
+            <label>
+                邮编:</label>
+            <input name="PostCode" class="easyui-validatebox">
+        </div>
+        <div class="fitem">
+            <label>
+                电话:</label>
+            <input name="Tel" class="easyui-validatebox">
+        </div>
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-ok" onclick="saveSupplier()">
+            保存</a> <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel"
+                onclick="javascript:$('#dlg').dialog('close')">退出</a>
+    </div>
+</body>
+</html>

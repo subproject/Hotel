@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AllocationData.aspx.cs" Inherits="Warehouse_AllocationData" %>

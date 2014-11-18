@@ -1,0 +1,164 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="RTuifangJiesuan.aspx.cs" Inherits="Cash_RTuifangJiesuan" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>退房结算统计表</title>
+    <link href="../demo/print.css" rel="stylesheet" type="text/css" />
+</head>
+<body style="font-size: 12px">
+    <form id="form1" runat="server">
+    <p style="text-align: center; width: 100%">
+        <strong style="font-size: 16px">退房结算统计表</strong></p>
+    <p style="width: 100%">
+        <span ">时间段：<%=starttime %>&nbsp;--&nbsp;<%=endtime %></span></p>
+    <table style="width: 100%">
+        <tr>
+            <td>
+                房号
+            </td>
+            <td>
+                名称
+            </td>
+            <td>
+                房间类型
+            </td>
+            <td>
+                标准价格
+            </td>
+            <td>
+                实际价格
+            </td>
+            <td>
+                来店日期
+            </td>
+            <td>
+                离店日期
+            </td>
+            <td>
+                入住类型
+            </td>
+            <td>
+                房费
+            </td>
+            <td>
+                商品费
+            </td>
+                        <td>
+                费用合计
+            </td>
+                        <td>
+                现金
+            </td>
+                        <td>
+                信用卡
+            </td>
+                        <td>
+                借记卡
+            </td>
+                        <td>
+                代金券
+            </td>
+                        <td>
+                会员储值消费
+            </td>
+                        <td>
+                支票收款
+            </td>
+                        <td>
+                单位记账
+            </td>
+                        <td>
+                收款合计
+            </td>
+                        <td>
+                会员卡
+            </td>
+                        <td>
+                协议单位
+            </td>
+                        <td>
+                发票号
+            </td>
+                        <td>
+                操作员
+            </td>
+        </tr>
+        <tr colspan="23"><%Session["user"].ToString();%></tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+    </table>
+    <p style="width: 100%">
+        <span style="position: relative; left: 500px;">制表时间：<%=starttime %>&nbsp;&nbsp;制表人&nbsp;&nbsp;<%=Session["user"].ToString() %></span></p>
+    </form>
+</body>
+</html>

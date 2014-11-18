@@ -1,0 +1,262 @@
+﻿<!--HEADER-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        .style6
+        {
+            width: 117px;
+        }
+        .contenttable
+        {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .contenttable tr td
+        {
+            text-align: left;
+            border-style: solid;
+            border-color: #000;
+            border-width: 1px;
+            font-size:14px;
+            padding:3px;
+        }
+        .footer
+        {
+            width: 100%;
+            border-collapse: collapse;
+            border: solid 1px #000;
+        }
+        .style17
+        {
+            width: 120px;
+        }
+        .style18
+        {
+            width: 27%;
+        }
+        </style>
+    <style type="text/css" media="print">.noprint { DISPLAY: none }</style>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css" />
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+</head>
+<body>
+    <div style="width:670px;max-width:100%;min-width:1000px;margin:auto">
+    <div class="noprint">
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-print',plain:true" onclick="printDoc()">打印</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="closeWindow()">关闭</a>
+    </div>
+    <table width="100%"  >
+        <tr>
+            <td style="text-align: center; font-size: 20px; font-weight: bold" 
+                class="slider-h">
+                  <span style="padding-left:10px;font-size: 20px;">争舜商务酒店预付单</span>  </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; font-size:20px; font-weight:bold;height:20px;">
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table width="100%" style="font-size:14px;">
+                    <tr>
+                        <td valign="bottom" style="text-align:left;width:70px;">
+                            姓名：
+                        </td>
+                        <td   valign="bottom" style="width:180px">
+                            {data_2}
+                        </td>
+                        <td valign="bottom">
+                            单据号码：<span id="Span2">{ShougongDanhao}</span>
+                        </td>
+                        <td align="right" valign="bottom">
+                            &nbsp;</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table><!--//id="bodyHeader"-->
+   
+
+     <table id="Table1"  width="100%" align="center">
+        <tr id="Tr3">
+            <td id="Td11" style="text-align:center;width:15%;border-right:0px;border-top:0px;">
+                客户类型</td>
+            <td id="Td12" style="text-align:center;width:20%;border-right:0px;border-top:0px;">{Kehuleixing}</td>
+            <td id="Td13" style="text-align:center;width:15%;border-right:0px;border-top:0px;">
+                国籍</td>
+            <td id="Td14" style="text-align:center;width:20%;border-right:0px;border-top:0px;">{Guoji}</td>
+  <td id="Td15" style="text-align:center;width:15%;border-right:0px;border-top:0px;">
+      会员卡</td>
+            <td id="Td16" style="text-align:center;width:10%;border-right:0px;border-top:0px;">{Huiyuanka}</td>
+               
+        </tr>
+          <tr id="Tr4">
+            <td id="Td17" style="text-align:center;width:15%;border-right:0px;border-top:0px;">
+                协议单位</td>
+            <td id="Td18" style="text-align:center;width:20%;border-right:0px;border-top:0px;">{Xieyidanwei}</td>
+            <td id="Td19" style="text-align:center;width:15%;border-right:0px;border-top:0px;">
+                预订人</td>
+            <td id="Td20" style="text-align:center;width:20%;border-right:0px;border-top:0px;">{Yudingren}</td>
+
+              <td id="Td23" style="text-align:center;width:15%;border-right:0px;border-top:0px;">
+                  联系电话</td>
+              <td id="Td22" colspan="2" style="text-align:center;width:15%;border-top:0px;">{Lianxidianhua}</td>
+ 
+        </tr>
+    </table>
+    <!--HEADER-->
+    <!--BODY-->
+    <table  class="contenttable" width="100%" align="center">
+        <tr id="Tr1">
+            <td id="Td1" style="text-align:center;width:15%;border-right:0px;border-top:0px;">预抵时间</td>
+          
+            <td id="Td3" style="text-align:center;width:25%;border-right:0px;border-top:0px;">{startTime}</td>
+            <td id="Td4" style="text-align:center;width:25%;border-right:0px;border-top:0px;">预离时间</td>
+       
+ 
+   <td id="Td5" style="text-align:center;width:25%;border-right:0px;border-top:0px;">{endTime}</td>
+             <td id="Td29" style="text-align:center;width:25%;border-right:0px;border-top:0px;"></td>
+               <td id="Td30" style="text-align:center;width:25%;border-right:0px;border-top:0px;"></td>
+        </tr>
+           <tr id="Tr2">
+            <td id="Td2" style="text-align:center;width:15%;border-right:0px;border-top:0px;">
+                付款方式</td>
+            <td id="Td6" style="text-align:center;width:20%;border-right:0px;border-top:0px;">{Fukuanfangshi}</td>
+            <td id="Td7" style="text-align:center;width:15%;border-right:0px;border-top:0px;">
+                预定金</td>
+            <td id="Td8" style="text-align:center;width:20%;border-right:0px;border-top:0px;">{Yudingjin}</td>
+  <td id="Td9" 
+                   style="text-align:center; border-right-style: none; border-right-color: inherit; border-right-width: 0px; border-top-style: none; border-top-color: inherit; border-top-width: 0px;" 
+                   class="style18">
+      操作员</td>
+            <td id="Td10" style="text-align:center;width:15%;border-right:0px;border-top:0px;">{Caozuoyuan}</td>
+               
+        </tr>
+    </table>
+    <!--BODY-->
+
+    <table  class="contenttable" width="100%" align="center" style="margin-top:0px;">
+        <tr id="column">
+            <td class="style17" style="width:15%;text-align:center;">
+                房间类型
+            </td>
+            <td class="style6" style="width:5%;text-align:center;">
+                数量
+            </td>
+            <td class="style6" style="width:25%;text-align:center;">
+             房号 
+            </td>
+             <td class="style6" style="width:25%;text-align:center;">
+                标准房价
+            </td>
+            <td class="style6" style="width:15%;text-align:center;">
+               实际房价
+            </td>
+            <td class="style6" style="width:15%;text-align:center;">
+               操作员
+            </td>
+        </tr>
+    </table>
+       <table id="rows" class="contenttable" width="100%" align="center">
+        <tr id="Tr5">
+            <td id="Td21" style="text-align:center;width:15%;border-right:0px;border-top:0px;">{RoomType}</td>
+            <td id="Td24" style="text-align:center;width:5%;border-right:0px;border-top:0px;">1</td>
+            <td id="Td25" style="text-align:center;width:25%;border-right:0px;border-top:0px;">{JB}</td>
+            <td id="Td26" style="text-align:center;width:25%;border-right:0px;border-top:0px;">{BiaoZhunFangJia}</td>
+            <td id="Td27" style="text-align:right;width:15%;border-right:0px;border-top:0px;">{ShiJiFangJia}</td>
+            <td id="Td28" class="style6" style="text-align:right;width:15%;border-right:0px;border-top:0px;"></td>
+     </tr>
+    </table>
+    <table  class="contenttable" width="100%" align="center" style="margin-top:0px;">
+        <tr id="Tr7">
+            <td class="style17" style="width:15%;text-align:center;">
+                合计数量
+            </td>
+            <td class="style6" style="width:20%;text-align:left;">
+                {Hejishuliang}
+            </td>
+              
+        </tr>
+         <tr id="Tr8">
+            <td class="style17" style="width:15%;text-align:center;">
+                预定单位
+            </td>
+           
+             <td class="style6" style="width:85%;text-align:left;">
+                {Yudingdanwei}
+            </td>
+        </tr>
+         <tr id="Tr9">
+            <td class="style17" style="width:15%;text-align:center;">
+                备注
+            </td>
+            
+             <td class="style6" style="width:85%;text-align:left;">
+                {Beizhu}
+            </td>
+        </tr>
+
+         
+
+    </table>
+    
+   <table width="100%" style="border-collapse:collapse;">
+        <tr>
+            <td style="text-align: center; font-size: 20px;   
+                class="slider-h">
+                  <span style="padding-left:10px;font-size: 15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 客人签字:</span>  </td>
+        </tr>
+
+    </table>
+    </div>
+</body>
+</html>
+<!--FOOTER-->
+<script type="text/javascript">
+    window.onload = function () {
+        var printData = window.opener.getPrintData();
+        var inner = document.body.innerHTML;
+        for (var it in printData) {
+            if (typeof (printData[it]) == "object") {
+                continue;
+            } else {
+                inner = inner.replace(new RegExp("{" + it + "}", "ig"), printData[it]);
+            }
+        }
+        document.body.innerHTML = inner;
+        var temp = document.getElementById("rows");
+        var tempRow = temp.children[0];
+        temp.removeChild(tempRow);
+        var rows = printData["rows"];
+        for (var i = 0; i < rows.length; i++) {
+            var itemInner = tempRow.innerHTML;
+            for (var r in rows[i]) {
+                itemInner = itemInner.replace(new RegExp("{" + r + "}", "ig"), rows[i][r]);
+            }
+            temp.innerHTML += itemInner;
+        }
+    };
+    window.onbeforeunload = function () {
+        event.returnValue = false;
+        return "请确认已经打印完成，是否继续操作?";
+    };
+    function printPreviewDoc() {
+        //window.printPreview();
+        //Web.ExecWB(6, 1)
+        wb.ExecWB(7, 1);
+        //execwb(8, 1);
+    }
+    function printDoc() {
+        window.print();
+    }
+    function closeWindow() {
+        window.close();
+    }
+</script>

@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="NewRuZhuData.aspx.cs" Inherits="FrontDesk_NewRuZhuData" %>

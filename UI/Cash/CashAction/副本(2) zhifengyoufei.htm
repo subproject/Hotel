@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../themes/icon.css" />
+    <script type="text/javascript" src="../../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+    <link href="../../css/cashaction/pageformal.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .drogdiv
+        {
+            width: 10px;
+            height: 50px;
+            background-color: Gray;
+        }
+        .targetarea
+        {
+            border: 1px solid red;
+            height: 30px;
+        }
+        .movediv
+        {
+            width: auto;
+            height: 10px;
+            position: absolute;
+            border: 1px solid transparent;
+            background-color: transparent;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        var cols = [{ field: 'testName', title: '<span class="dropitem">测试名</span>', align: 'center', width: 120 },
+               { field: 'testValue', title: '<span class="dropitem">测试值</span>', align: 'center', width: 120 },
+               { field: 'testNameF', title: '<span class="dropitem">测试名F</span>', align: 'center', width: 120 },
+               { field: 'testNameD', title: '<span class="dropitem">测试名D</span>', align: 'center', width: 120 },
+               { field: 'testNameE', title: '<span class="dropitem">测试名E</span>', align: 'center', width: 120 }
+               ];
+        var url = "/Test/Test1Data";
+        $(document).ready(function () {
+            init();
+            drag(); //绑定datagrid，绑定拖拽
+        });
+        function init() {
+            $("#test").datagrid({
+                toolbar: "#tb",
+                url: url,
+                type: "post",
+                datatype: "json",
+                width: 600,
+                height: 280,
+                loadMsg: "数据加载中，请稍后...",
+                nowrap: true,
+                rownumbers: false,
+                pagination: true,
+                singleSelect: true,
+                columns: [cols],
+                //bind数据成功重新设置拖动对象
+                onLoadSuccess: function (data) {
+                    drag();
+                }
+            });
+
+            $("#dropdiv").droppable({
+                accept: '.datagrid-header-inner .datagrid-cell',
+                onDragEnter: function (e, source) {
+                    var ex = event || window.event;
+                    $(this).html('enter');
+                    //$("#dropviewtxt").html( 'x': ex.screenX + 'y': ex.screenY );
+
+
+                },
+                onDragLeave: function (e, source) {
+                    $(this).html('leave');
+                },
+                onDrop: function (e, source) {
+
+                    $(this).html($(source).html() + ' dropped');
+                }
+            });
+        }
+        //拖动drag和drop都是datagrid的头的datagrid-cell
+        function drag() {
+            $('.datagrid-header-inner .datagrid-cell').draggable({
+                revert: true,
+                proxy: function (source) {
+                    var p = $('<div></div>');
+                    p.html($(source).html()).appendTo('body');
+                    return p;
+                },
+                onDrag: function (e) {
+
+                }
+            }).droppable({
+                accept: '.drogdiv',
+                onDrop: function (e, source) {
+                    alert(e.toString());
+                }
+            });
+        }
+</script>
+    <div id="test">
+    </div>
+    <div id="tb" style="padding: 3px">
+        <div id="dropdiv" class="targetarea">
+        </div>
+    </div>
+    <div id="dropviewtxt" class="movediv">
+    </div>
+</body>
+</html>

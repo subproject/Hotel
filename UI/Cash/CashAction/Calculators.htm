@@ -1,0 +1,273 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title></title>
+    <style><!--
+    .tdBtn input
+    {
+        width:50px;
+        font-weight:bold;
+        margin:1px;
+        font-size:16px;
+    }
+
+    .tdExtBtn input
+    {
+        height:60px;
+        line-height:60px;
+    }
+--></style>
+    <script type="text/javascript">// <![CDATA[
+        function getObj(id) {
+            return document.getElementById(id);
+        }
+
+        function pageLoad() {
+            var inputs = document.getElementById('trCalc').getElementsByTagName('input');
+            for (var i = 0; i < inputs.length; i++) {
+                if (inputs[i].type == 'button') {
+                    inputs[i].onclick = btn_onclick;
+                }
+            }
+            document.getElementById("contentdiv").click();
+            getObj('txt').click();
+            getObj('txt').value = '1';
+            document.all.id.focus(); 
+        }
+
+        function btn_onclick() {
+            var txt = getObj('txt');
+            showText(this.value);
+
+        }
+        function divkeyDown(evt) {
+            evt = evt || window.event;
+            if (evt.shiftKey && evt.keyCode == 56) {
+
+            }
+            switch (evt.keyCode) {
+                case 13:
+                    showText('等于');
+                    evt.returnValue = false;
+                    break;
+                case 27:
+                    showText('清空');
+                    evt.returnValue = false;
+                    break;
+                case 187:
+                    if (evt.shiftKey) {
+                        showText('+');                        
+                    }
+                    else {
+                        showText('+/+');
+                    }
+                    evt.returnValue = false;
+                    break;
+                case 189:
+                    if (evt.shiftKey) {
+                        showText('-');                     
+                    }
+                    else {
+                        showText('+/-');
+                    }
+                    evt.returnValue = false;
+                    break;               
+                case 190:
+                    showText('.');
+                    evt.returnValue = false;
+                    break;
+                case 191:
+                    if (evt.shiftKey) {
+                        showText('/');
+                        evt.returnValue = false;
+                    }
+                    break;
+                case 48:
+                    showText('0');
+                    evt.returnValue = false;
+                    break;
+                case 49:
+                    showText('1');
+                    evt.returnValue = false;
+                    break;
+                case 50:
+                    showText('2');
+                    evt.returnValue = false;
+                    break;
+                case 51:
+                    showText('3');
+                    evt.returnValue = false;
+                    break;
+                case 52:
+                    showText('4');
+                    evt.returnValue = false;
+                    break;
+                case 53:
+                    showText('5');
+                    evt.returnValue = false;
+                    break;
+                case 54:
+                    showText('6');
+                    evt.returnValue = false;
+                    break;
+                case 55:
+                    showText('7');
+                    evt.returnValue = false;
+                    break;
+                case 56:
+                    if (evt.shiftKey) {
+                        showText('*');
+                        evt.returnValue = false;
+                    }
+                    else {
+                        showText('8');
+                        evt.returnValue = false;
+                    }
+                    break;
+                case 57:
+                    showText('9');
+                    evt.returnValue = false;
+                    break; 
+                default:
+                    if (txt.value == '0') {
+                        txt.value = '';
+                    }                   
+                    break;
+            }
+           // alert(evt.keyCode);
+          
+        }
+        var value = 0;
+        var op = '';
+        function showText(str) {
+            var spanOp = getObj('spanOp');
+            if ('0123456789.'.indexOf(str) != -1) {
+                if (txt.value == '0') {
+                    txt.value = '';
+                }
+                txt.value += str;
+                return;
+            }
+            if (txt.value == '') {
+                txt.value = 0;
+            }
+            if (str == '+/-') {
+                if (txt.value.indexOf('-') == 0) {
+                    txt.value = txt.value.substr(1);
+                }
+                else {                  
+                    txt.value = '-' + txt.value;
+                }
+                value = txt.value;
+                return;
+            }
+            if (str == '+/+') {
+                if (txt.value.indexOf('-') == 0) {
+                    txt.value = txt.value.substr(1);
+                }
+                else {
+                    txt.value =  txt.value;
+                }
+                value = txt.value;
+                return;
+            }
+            if ('+-*/'.indexOf(str) != -1) {
+                if (txt.value == '0' && str == '/') {
+                    alert('除零错误！');
+                    return;
+                }
+                if (txt.value == '') {
+                    txt.value = 0;
+                }
+                eval('value ' + op + '= ' + txt.value);
+                txt.value = '0';
+                op = str;
+                spanOp.innerHTML = op;
+                return;
+            }
+
+            if (str == '等于' || str == '=') {
+                if (op != '') {
+                    eval('value ' + op + '= ' + txt.value);
+                    op = '';
+                    spanOp.innerHTML = '';
+                }
+                txt.value = value;
+            }
+
+            if (str == '清空') {
+                txt.value = '0';
+                value = 0;
+                op = '';
+                spanOp.innerHTML = '';
+            }
+        }
+        //确保只能输入数字及小数点
+        function txtfilter(e) {
+            var obj = e.srcElement || e.target;
+            var dot = obj.value.indexOf(".");
+            //alert(e.which); 
+            var key = e.keyCode || e.which;
+            if (key == 8 || key == 9 || key == 46 || (key >= 37 && key <= 40))
+            //这里为了兼容Firefox的backspace,tab,del,方向键  
+                return true;
+            if (key <= 57 && key >= 48) {
+                //数字  
+                if (dot == -1)
+                //没有小数点     
+                    return true;
+                else if (obj.value.length <= dot + 10)
+                //两位小数  
+                    return true;
+            }
+            else if ((key == 46) && dot == -1) {
+                //小数点  
+                return true;
+            }
+            return false;
+        }
+// ]]></script>
+</head>
+<body onkeydown="divkeyDown(event)">
+    <div id="contentdiv">
+        <table style="border: 1px solid #808080">
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <input id="txt"    disabled="disabled"  style="font-size: 23px; font-weight: bold; color: blue; text-align: right; width: 255px;"
+                            onkeydown="divkeyDown(event)"  onkeypress="return txtfilter(event)" type="text" />
+                        <span id="spanOp">&nbsp;</span>
+                    </td>
+                </tr>
+                <tr id="trCalc">
+                    <td class="tdBtn">
+                        <input type="button" value="7" />
+                        <input type="button" value="8" />
+                        <input type="button" value="9" />
+                        <input type="button" value="+" /><br />
+                        <input type="button" value="4" />
+                        <input type="button" value="5" />
+                        <input type="button" value="6" />
+                        <input type="button" value="-" /><br />
+                        <input type="button" value="1" />
+                        <input type="button" value="2" />
+                        <input type="button" value="3" />
+                        <input type="button" value="*" /><br />
+                        <input type="button" value="0" />
+                        <input type="button" value="+/-" />
+                        <input type="button" value="." />
+                        <input type="button" value="/" />
+                    </td>
+                    <td class="tdExtBtn">
+                        <input type="button" value="清空" /><br />
+                        <input type="button" value="等于" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        pageLoad();
+    </script>
+</body>
+</html>

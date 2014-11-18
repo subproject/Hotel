@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>货位管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css">
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        var url;
+        function newPosition() {
+            $('#dlg').dialog('open').dialog('setTitle', '新增货位');
+            $('#fm').form('clear');
+            url = 'PositionMgrData.aspx?action=create';
+        }
+        function editPosition() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                $('#dlg').dialog('open').dialog('setTitle', '编辑货位');
+                $('#fm').form('load', row);
+                url = 'PositionMgrData.aspx?action=update&ID=' + row.ID;
+            }
+        }
+        function savePosition() {
+            $('#fm').form('submit', {
+                url: url,
+                onSubmit: function () {
+                    return $(this).form('validate');
+                },
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.errorMsg) {
+                        $.messager.show({
+                            title: 'Error',
+                            msg: result.errorMsg
+                        });
+                    } else {
+                        $('#dlg').dialog('close');        // close the dialog
+                        $('#dg').datagrid('reload');    // reload the user data
+                    }
+                }
+            });
+        }
+        function destroyPosition() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                $.messager.confirm('Confirm', '确认删除?', function (r) {
+                    if (r) {
+                        $.post('PositionMgrData.aspx?action=delete', { ID: row.ID }, function (result) {
+                            if (result.success) {
+                                $('#dg').datagrid('reload');    // reload the user data
+                            } else {
+                                $.messager.show({    // show error message
+                                    title: 'Error',
+                                    msg: result.errorMsg
+                                });
+                            }
+                        }, 'json');
+                    }
+                });
+            }
+        }
+    </script>
+    <style type="text/css">
+        #fm
+        {
+            margin: 0;
+            padding: 10px 30px;
+        }
+        .ftitle
+        {
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .fitem
+        {
+            margin-bottom: 5px;
+        }
+        .fitem label
+        {
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+</head>
+<body class="easyui-layout" style="padding:2px">
+    <table id="dg" title="货位管理" class="easyui-datagrid" style="height:500px"
+        url="PositionMgrData.aspx?action=read" toolbar="#toolbar" pagination="true" rownumbers="true" fitcolumns="true"
+        singleselect="true">
+        <thead>
+            <tr>
+                <th field="ID" width="50">
+                    系统编号
+                </th>
+                <th field="LocCode" width="50">
+                    货位编号
+                </th>
+                <th field="LocName" width="50">
+                    货位
+                </th>
+            </tr>
+        </thead>
+    </table>
+    <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-add" plain="true"
+            onclick="newPosition()">新增货位</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+                iconcls="icon-edit" plain="true" onclick="editPosition()">修改货位</a> <a href="javascript:void(0)"
+                    class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroyPosition()">
+                    删除货位</a> 
+    </div>
+    <div id="dlg" class="easyui-dialog" style="width: 400px; height: 280px; padding: 10px 20px"
+        closed="true" buttons="#dlg-buttons">
+        <div class="ftitle">
+            货位信息</div>
+        <!--新增货位-->
+        <form id="fm" method="post" novalidate>
+        <div class="fitem">
+            <label>
+                货位编号:</label>
+            <input name="LocCode" class="easyui-validatebox" required="true">
+        </div>
+        <div class="fitem">
+            <label>
+                货位:</label>
+            <input name="LocName" class="easyui-validatebox" required="true">
+        </div>
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-ok" onclick="savePosition()">
+            保存</a> <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel"
+                onclick="javascript:$('#dlg').dialog('close')">退出</a>
+    </div>
+</body>
+</html>

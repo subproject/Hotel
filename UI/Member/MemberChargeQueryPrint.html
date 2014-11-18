@@ -1,0 +1,224 @@
+﻿<!--HEADER-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title></title>
+    <style type="text/css">
+        .style6
+        {
+            width: 117px;
+        }
+        .contenttable
+        {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .contenttable tr td
+        {
+            text-align: left;
+            border-style: solid;
+            border-color: #000;
+            border-width: 1px;
+            font-size:14px;
+            padding:3px;
+        }
+        .footer
+        {
+            width: 100%;
+            border-collapse: collapse;
+            border: solid 1px #000;
+        }
+        .style18
+        {
+            width: 18%;
+        }
+        .style19
+        {
+            width: 12%;
+        }
+        .style21
+        {
+            width: 170px;
+        }
+        .style23
+        {
+            width: 14%;
+        }
+        .style24
+        {
+            width: 73px;
+        }
+        </style>
+    <style type="text/css" media="print">.noprint { DISPLAY: none }</style>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css" />
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+</head>
+<body>
+    <div style="width:670px;max-width:100%;min-width:1000px;margin:auto">
+    <div class="noprint">
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-print',plain:true" onclick="printDoc()">打印</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true" onclick="closeWindow()">关闭</a>
+    </div>
+    <table width="100%" style="border-collapse:collapse;">
+        <tr>
+            <td style="text-align: center; font-size: 20px; font-weight: bold">
+                <span style="padding-left:10px;font-size: 20px;">会员充值记录查询</span>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align:center; font-size:20px; font-weight:bold;height:20px;">
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table width="100%" style="border-collapse:collapse;font-size:14px;">
+                 
+                    <tr>
+                        <td valign="bottom" style="text-align:left;width:70px;">
+                            时间段：
+                        </td>
+                        <td id="Td1" valign="bottom">
+                            {data_1}
+                        </td>
+
+                        <td valign="bottom">
+                            到：<span id="Span2">{data_2}</span>
+                        </td>
+                        <td align="right" valign="bottom">
+                            收银员</td>
+                             <td id="Td10" valign="bottom">
+                            {data_3}
+                        </td>
+
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <table id="bodyHeader" class="contenttable" width="100%" align="center" style="margin-top:10px;">
+        <tr id="column">
+            <td class="style18" style="text-align:center;">
+                姓名
+            </td>
+            <td class="style23" style="text-align:center;">
+                会员卡号
+            </td>
+            <td class="style6" style="width:10%;text-align:center;">
+                充值金额
+            </td>
+            <td class="style6" style="width:10%;text-align:center;">
+                实收金额
+            </td>
+            <td class="style6" style="width:10%;text-align:center;">
+                付款方式
+            </td>
+            <td class="style19" style="width:10%;text-align:center;">
+                时间
+            </td>
+           
+            <td class="style6" style="width:15%;text-align:center;">
+                备注
+            </td>
+        </tr>
+    </table>
+    <!--HEADER-->
+    <!--BODY-->
+    <table id="rows" class="contenttable" width="100%" align="center">
+        <tr id="Tr1">
+            <td id="Td1" 
+                style="text-align:center; border-right-style: none; border-right-color: inherit; border-right-width: 0px; border-top-style: none; border-top-color: inherit; border-top-width: 0px;" 
+                class="style18">{name}</td>
+            <td id="Td2" 
+                style="text-align:center; border-right-style: none; border-right-color: inherit; border-right-width: 0px; border-top-style: none; border-top-color: inherit; border-top-width: 0px;" 
+                class="style23">
+                {memberno}</td>
+            <td id="Td3"  class="style6" style="text-align:center;width:10%;border-right:0px;border-top:0px;">
+                {changemoney}</td>
+            <td id="Td4" class="style6" style="text-align:center;width:10%;border-right:0px;border-top:0px;">
+                {money}</td>
+            <td id="Td5" class="style6" style="text-align:right;width:10%;border-right:0px;border-top:0px;">
+                {paytype}</td>
+            <td id="Td6" class="style19" style="text-align:right;width:10%;border-right:0px;border-top:0px;">
+                {time}</td>
+            
+               <td id="Td7" class="style6" style="text-align:center;width:15%;border-top:0px;">{bz}</td>
+        </tr>
+    </table>
+    <!--BODY-->
+    <!--FOOTER-->
+    <table width="100%" style="font-size:14px;">
+        <tr>
+            <td style="height:30px;text-align:right;">
+              <table style="border-collapse:collapse;font-size:14px; width: 60%;">
+                 
+                    <tr>
+                        <td valign="bottom" class="style18" style="text-align:left;width:70px;">
+                            合计：
+                        </td>
+                        <td id="Td9" class="style23" valign="bottom" class="style21">
+                            &nbsp;</td>
+                        <td valign="bottom" align="left" class="style6">
+                            {data_4}
+                        </td>
+                        <td align="left" class="style6" valign="bottom">
+                           <span id="Span1">{data_5}</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    </div>
+</body>
+</html>
+<!--FOOTER-->
+<script type="text/javascript">
+    window.onload = function () {
+        
+        var printData = window.opener.getPrintData();
+       
+        var inner = document.body.innerHTML;
+        for (var it in printData) {
+            if (typeof (printData[it]) == "object") {
+                continue;
+            } else {
+              
+                inner = inner.replace(new RegExp("{" + it + "}", "ig"), printData[it]);
+            }
+        }
+        document.body.innerHTML = inner;
+        var temp = document.getElementById("rows");
+        var tempRow = temp.children[0];
+        temp.removeChild(tempRow);
+        var rows = printData["rows"];
+       
+        for (var i = 0; i < rows.length; i++) {
+            var itemInner = tempRow.innerHTML;
+            for (var r in rows[i]) {
+                itemInner = itemInner.replace(new RegExp("{" + r + "}", "ig"), rows[i][r]);
+            }
+            temp.innerHTML += itemInner;
+        }
+    };
+    window.onbeforeunload = function () {
+        event.returnValue = false;
+        return "请确认已经打印完成，是否继续操作?";
+    };
+    function printPreviewDoc() {
+        //window.printPreview();
+        //Web.ExecWB(6, 1)
+        wb.ExecWB(7, 1);
+        //execwb(8, 1);
+    }
+    function printDoc() {
+        window.print();
+    }
+    function closeWindow() {
+        window.close();
+    }
+</script>

@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>当日抵达</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css">
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        function YDToRuzhu() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                $.messager.confirm('Confirm', '确认转入住?', function (r) {
+                    if (r) {
+                        $.post('YuDingGuanLiData.aspx?action=transfer', { guid: row.YDID, ydnum: row.YDNum }, function (result) {
+                            if (result.success) {
+                                $('#dg').datagrid('reload');
+                                window.opener.location.reload();
+                                window.close();
+                                // reload the user data
+                            } else {
+                                $.messager.show({    // show error message
+                                    title: 'Error',
+                                    msg: result.errorMsg
+                                });
+                            }
+                        }, 'json');
+                    }
+                });
+            }
+            else {
+                alert("请先选择预订信息！");
+            }
+        }
+        function PrintPage() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                window.open("YuDingDan.aspx?num=" + row.YDNum);
+            }
+            else {
+                alert("请先选择预订信息！");
+            }
+        }
+        function AssignRoom() {
+
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                if (row.AssignRoom == '未配房') {
+                    $('#dlg').dialog('open').dialog('setTitle', '分配房间');
+                    $('#kfdata').datagrid({
+                        url: '../Setting/get_kf.aspx?readcanyd=true&cgyid=0&begin=' + row.OnBoardTime + '&end=' + row.LeaveTime
+                    });
+                }
+                else {
+                    alert("房间已经分配");
+                 }
+            }
+            else {
+                alert("请先选择预订信息！");
+            }
+
+        }
+    </script>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'center'" style="padding: 1px">
+        <!--查询结果-->
+        <table class="easyui-datagrid" id="dg" url="YuDingGuanLiData.aspx?action=read" title="当日抵达____(系统仅显示当前有效的预定信息,更多预定信息请使用预定查询)"
+            toolbar="#toolbar" singleselect="true">
+            <thead>
+                <tr>
+                    <th data-options="field:'YDNum'">
+                        预订编号
+                    </th>
+                    <th data-options="field:'Yder'">
+                        预定人
+                    </th>
+                    <th data-options="field:'YdTel'">
+                        预定人电话
+                    </th>
+                    <th data-options="field:'Customer',align:'center'">
+                        入住人
+                    </th>
+                    <th data-options="field:'OnBoardTime'">
+                        到店日期
+                    </th>
+                    <th data-options="field:'LeaveTime',align:'center'">
+                        离店日期
+                    </th>
+                    <th data-options="field:'MemberCardNo',align:'center'">
+                        会员卡号
+                    </th>
+                    <th data-options="field:'AssignRoom',align:'center'">
+                        房号
+                    </th>
+                    <!--<th data-options="field:'Customer',width:80,align:'center'">
+                        协议单位
+                    </th>
+                    <th data-options="field:'Customer',width:80,align:'center'">
+                        主账
+                    </th>
+                    <th data-options="field:'Customer',width:80,align:'center'">
+                        客户类型
+                    </th>
+                    <th data-options="field:'Customer',width:80,align:'center'">
+                        国籍
+                    </th>
+                    <th data-options="field:'Yder',width:80,align:'center'">
+                        预订人
+                    </th>
+                    <th data-options="field:'YdTel',width:80,align:'center'">
+                        联系电话
+                    </th>
+                    <th data-options="field:'Customer',width:80,align:'center'">
+                        预订单位
+                    </th>
+                    <th data-options="field:'Customer',width:80,align:'center'">
+                        预订方式
+                    </th>
+                    <th data-options="field:'Customer',width:80,align:'center'">
+                        预订金
+                    </th>
+                    <th data-options="field:'Customer',width:80,align:'center'">
+                        备注
+                    </th>
+                    <th data-options="field:'Customer',width:80,align:'center'">
+                        预订日期
+                    </th>
+                    <th data-options="field:'Customer',width:80,align:'center'">
+                        操作员
+                    </th>-->
+                </tr>
+            </thead>
+        </table>
+        <div id="toolbar">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-tip" plain="true"
+                onclick="AssignRoom()">分配房间</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+                    iconcls="icon-redo" plain="true" onclick="YDToRuzhu()">转入住</a> <a href="javascript:void(0)"
+                        class="easyui-linkbutton" iconcls="icon-print" plain="true" onclick="PrintPage()">
+                        打印预定单</a>
+        </div>
+        <div class="easyui-dialog" id="dlg" closed="true" style="width: 600px; height: 400px">
+            <table class="easyui-datagrid" id="kfdata"
+                style="padding: 0px; width: 600px;">
+                <thead>
+                    <tr>
+                        <th data-options="field:'ck',checkbox:true">
+                        </th>
+                        <th data-options="field:'FH',width:120">
+                            房号
+                        </th>
+                        <th data-options="field:'JBName',width:120">
+                            房间类型
+                        </th>
+                        <th data-options="field:'DJ',width:120">
+                            房价
+                        </th>
+                        <th data-options="field:'StatusName',width:120">
+                            状态
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

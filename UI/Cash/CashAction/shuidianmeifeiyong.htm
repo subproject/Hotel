@@ -1,0 +1,475 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>水电煤费用</title>
+    <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../themes/icon.css" />
+    <script type="text/javascript" src="../../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+    <script src="../../locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <link href="../../css/cashaction/pageformal.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="easyui-layout">
+    <div region="east" split="true" title="East" class="leftpage buttons">
+        <table>
+            <tr>
+                <td>
+                    <input type="button" class="inputbutton" value="保 存" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="button" class="inputbutton" value="关 闭" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div region="center" border="true" title="帐目明细" style="border-left: 0px; border-right: 0px;
+        overflow: hidden;">
+        <div id="WindailogDiv">
+            <iframe scrolling="auto" id='windowIframe' frameborder="0" src="" style="width: 100%;
+                height: 100%;"></iframe>
+        </div>
+        <div region="center" border="true" title="" split="true">
+            <div class="easyui-tabs">
+                <div title="上次抄表的记录" data-options="fit:true">
+                    <table class="datagridformat">
+                        <tr>
+                            <td class="tdtype">
+                                帐号:
+                            </td>
+                            <td class="tddatatype">
+                                <%=AutoID%>
+                            </td>
+                            <td class="tdtype">
+                                房间号:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                操作员:
+                            </td>
+                            <td class="tddatatype" colspan="3">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="datagridformat">
+                        <tr>
+                            <td class="tdtype">
+                                费用名称:
+                            </td>
+                            <td class="tddatatype">
+                                <%=AutoID%>
+                                <input type="button" value="…" />
+                            </td>
+                            <td class="tdtype">
+                                金 额:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                                <input type="button" value="…" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                发生时间:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                单据号:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                优惠理由:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                                <input type="button" value="…" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                备 注:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                入住人员:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                团队/单位:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                应收帐款:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                预收帐款:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                联房房号:
+                            </td>
+                            <td class="tddatatype" colspan="3">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div title="本次抄表" data-options="fit:true">
+                    <table class="datagridformat">
+                        <tr>
+                            <td class="tdtype">
+                                帐号:
+                            </td>
+                            <td class="tddatatype">
+                                <%=AutoID%>
+                            </td>
+                            <td class="tdtype">
+                                房间号:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                操作员:
+                            </td>
+                            <td class="tddatatype" colspan="3">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="datagridformat">
+                        <tr>
+                            <td class="tdtype">
+                                费用名称:
+                            </td>
+                            <td class="tddatatype">
+                                <%=AutoID%>
+                                <input type="button" value="…" />
+                            </td>
+                            <td class="tdtype">
+                                金 额:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                                <input type="button" value="…" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                发生时间:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                单据号:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                优惠理由:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                                <input type="button" value="…" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                备 注:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                入住人员:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                团队/单位:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                应收帐款:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                预收帐款:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                联房房号:
+                            </td>
+                            <td class="tddatatype" colspan="3">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div title="该客人的历史抄表值" data-options="fit:true">
+                    <table class="datagridformat">
+                        <tr>
+                            <td class="tdtype">
+                                帐号:
+                            </td>
+                            <td class="tddatatype">
+                                <%=AutoID%>
+                            </td>
+                            <td class="tdtype">
+                                房间号:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                操作员:
+                            </td>
+                            <td class="tddatatype" colspan="3">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="datagridformat">
+                        <tr>
+                            <td class="tdtype">
+                                费用名称:
+                            </td>
+                            <td class="tddatatype">
+                                <%=AutoID%>
+                                <input type="button" value="…" />
+                            </td>
+                            <td class="tdtype">
+                                金 额:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                                <input type="button" value="…" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                发生时间:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                单据号:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                优惠理由:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                                <input type="button" value="…" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                备 注:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                入住人员:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                团队/单位:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                应收帐款:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                预收帐款:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                联房房号:
+                            </td>
+                            <td class="tddatatype" colspan="3">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div title="该房间的历史抄表记录" data-options="fit:true">
+                    <table class="datagridformat">
+                        <tr>
+                            <td class="tdtype">
+                                帐号:
+                            </td>
+                            <td class="tddatatype">
+                                <%=AutoID%>
+                            </td>
+                            <td class="tdtype">
+                                房间号:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                操作员:
+                            </td>
+                            <td class="tddatatype" colspan="3">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="datagridformat">
+                        <tr>
+                            <td class="tdtype">
+                                费用名称:
+                            </td>
+                            <td class="tddatatype">
+                                <%=AutoID%>
+                                <input type="button" value="…" />
+                            </td>
+                            <td class="tdtype">
+                                金 额:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                                <input type="button" value="…" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                发生时间:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                单据号:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                优惠理由:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                                <input type="button" value="…" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                备 注:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                入住人员:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                团队/单位:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                应收帐款:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                            <td class="tdtype">
+                                预收帐款:
+                            </td>
+                            <td class="tddatatype">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                联房房号:
+                            </td>
+                            <td class="tddatatype" colspan="3">
+                                <%=Fanghao%>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>收款操作</title>
+    <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../themes/icon.css" />
+    <script type="text/javascript" src="../../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+    <script src="../../src/jquery.json-2.2.min.js" type="text/javascript"></script>
+    <script src="../../locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+    <link href="../../css/cashaction/pageformal.css" rel="stylesheet" type="text/css" />
+    <script src="../../Hotelmgr.js" type="text/javascript"></script>
+    <script src="../../js/jiezhangaction/ShouKuanaction.js" type="text/javascript"></script>
+</head>
+<body class="easyui-layout">
+    <div region="east" split="true" title="East" class="leftpage buttons">
+        <table>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)" class="positive" onclick="SelctSigeEntity('0')">
+                        <img src="../../css/cashaction/imag/apply2.png" alt="" />
+                        新  增</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)" class="positive" onclick="AddDataRow()">
+                        <img src="../../css/cashaction/imag/apply2.png" alt="" />
+                        保  存</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)" class="positive" onclick="DeleteRow()">
+                        <img src="../../css/cashaction/imag/apply2.png" alt="" />
+                        删  除</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)" class="positive" onclick="">
+                        <img src="../../css/cashaction/imag/apply2.png" alt="" />
+                        预  览</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)" class="positive" onclick="">
+                        <img src="../../css/cashaction/imag/apply2.png" alt="" />
+                        直接打印</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a href="javascript:void(0)" class="positive" onclick="">
+                        <img src="../../css/cashaction/imag/apply2.png" alt="" />
+                        打印设置</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div region="center" border="true" title="" style="border-left: 0px; border-right: 0px;
+        overflow: hidden;">       
+        <div region="center" border="true" title="" split="true">
+            <div class="easyui-tabs">
+                <div title="款项明细" data-options="fit:true">
+                    <table id="shoudatadetails" class="datagridformat" style="width: 99%; margin-bottom: 0px;">
+                        <tr>
+                            <td class="tdtype" style=" width:220px;">
+                                付款方式:
+                            </td>
+                            <td class="tddatatype" style=" width:220px;">
+                                <input class="easyui-combobox" id="paytype" data-options="required:true" name="paytype" style="width:220px; margin-bottom: 0px;" />
+                            </td>
+                            <td class="tdtype" style=" width:120px;">
+                                金额:
+                            </td>
+                            <td class="tddatatype" >
+                                <input type="text" id="paymoney" class="easyui-numberbox" data-options="required:true,precision:2,mix:0"
+                                    style="width: 98%; margin-bottom: 0px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                发生时间:
+                            </td>
+                            <td class="tddatatype">
+                                <input id="paytime"  disabled="disabled" class="easyui-datetimebox" name="paytime" style="width:220px;
+                                    margin-bottom: 0px;" />
+                            </td>
+                            <td class="tdtype">
+                                单据号:
+                            </td>
+                            <td class="tddatatype">
+                                <input class="easyui-validatebox" type="text" name="payreceiptcode" id="payreceiptcode"
+                                    style="width: 98%; margin-bottom: 0px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                备注:
+                            </td>
+                            <td class="tddatatype" colspan="3">
+                                <input class="easyui-validatebox" type="text" name="payremark" id="payremark" style="width: 99%;
+                                    margin-bottom: 0px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                入住人员:
+                            </td>
+                            <td class="tddatatype">
+                                <input class="easyui-validatebox" disabled="disabled"  type="text" name="payman" id="payman" style="width: 98%;
+                                    margin-bottom: 0px;" />
+                            </td>
+                            <td class="tdtype">
+                                团体/单位:
+                            </td>
+                            <td class="tddatatype">
+                                <input class="easyui-validatebox" disabled="disabled"  type="text" name="djnumber" id="payUnit" style="width: 98%;
+                                    margin-bottom: 0px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                应收账款:
+                            </td>
+                            <td class="tddatatype">
+                                <input type="text" disabled="disabled" class="easyui-numberbox" id="shunpay" data-options="precision:2"
+                                    style="width: 98%; margin-bottom: 0px;" />
+                            </td>
+                            <td class="tdtype">
+                                预收账款：
+                            </td>
+                            <td class="tddatatype">
+                                <input type="text" id="Prepaid" disabled="disabled"  class="easyui-numberbox" data-options="precision:2"
+                                    style="width: 98%; margin-bottom: 0px;" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtype">
+                                联房房号:
+                            </td>
+                            <td class="tddatatype" colspan="3">
+                                <input class="easyui-validatebox" disabled="disabled"  type="text" name="payrooms" id="payrooms" style="width: 99%;
+                                    margin-bottom: 0px;" />
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

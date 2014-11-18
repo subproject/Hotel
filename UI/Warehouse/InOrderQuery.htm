@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>供应商进货报表</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css" />
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+      <script type="text/javascript" src="../Hotelmgr.js"></script>
+    <script type="text/javascript">
+        var dataSaved = false;
+        function myformatter(date) {
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            var d = date.getDate();
+            return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+        }
+        function myparser(s) {
+            if (!s) return new Date();
+            var ss = (s.split('-'));
+            var y = parseInt(ss[0], 10);
+            var m = parseInt(ss[1], 10);
+            var d = parseInt(ss[2], 10);
+            if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+                return new Date(y, m - 1, d);
+            } else {
+                return new Date();
+            }
+        }
+        function submitForm() {
+            
+                var date = $("#StartTime").combobox("getValue");
+                var date2 = $("#EndTime").datebox("getValue");
+
+                $('#dg').datagrid({ url: 'InOrderQueryData.aspx?action=query&starttime=' + "" + date + "" + '&endtime=' + "" + date2 + "" });
+              
+            
+        
+        }
+
+
+
+        function inorderDetails() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+               
+                openwin(('InorderQueryDetails.html?id=' + row.ID), '500', '800');
+                
+            }
+          
+        }
+         
+    </script>
+</head>
+
+
+
+<body class="easyui-layout" style="padding: 2px">
+    <div class="easyui-panel" title="供应商进货报表">
+     
+           <div id="ff" style="padding: 10px 10px 10px 10px">
+              <form id="Form1" method="post" runat="server">
+
+            <table >
+                <tr>
+                    <td style="margin-right: 10px">
+                        开始时间:
+                    </td>
+                    <td>
+                        <input class="easyui-datetimebox"  name="StartTime" id="StartTime" value="<%=DateTime.Today.ToShortDateString()%>"> </input>
+                    </td>
+                    
+                </tr>
+                 <tr>
+                    
+                    
+                    <td>
+                        结束时间：
+                    </td>
+                    <td>
+                        <input class="easyui-datetimebox"  name="EndTime" id="EndTime" value="<%=DateTime.Today.ToShortDateString()%>"> </input>
+                    </td>
+                      
+                </tr>
+                 
+            
+                
+            </table> 
+            </form>        
+        </div>
+       <div id="tb" style="height: auto">
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
+            onclick="submitForm()">查询</a> 
+         <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
+            onclick="inorderDetails()">明细</a>  <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-remove',plain:true" onclick="window.close()">退出</a >
+     
+    </div>
+      <div>
+      
+    <table id="dg" class="easyui-datagrid"  style="height: auto"
+        data-options="iconCls: 'icon-edit',
+        toolbar: '#tb',
+                singleSelect: true">
+        <thead>
+            <tr>
+            
+                <th data-options="field:'ID',width:80,align:'center'">
+                    供应商编码
+                </th>
+ 
+                <th data-options="field:'SupplierName',width:80,align:'center' ">
+                    供应商名称
+                </th>
+                <th data-options="field:'InGoodsTimes',width:80,align:'center'">
+                    进货次数
+                </th>
+                <th data-options="field:'OutGoodsTimes',width:80,editor:'text',align:'center'">
+                    退货次数
+                </th>
+                <th data-options="field:'TotalMoney',width:80,editor:'text',align:'center'">
+                    进货总额
+                </th>
+                
+            </tr>
+        </thead>
+    </table>
+      </div>
+  </div>
+     
+
+       
+   
+  
+   
+</body>
+</html>

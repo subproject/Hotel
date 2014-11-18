@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>客房费用明细</title>
+     <link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../../themes/icon.css" />
+    <link href="../../css/cashaction/pageformal.css" rel="stylesheet" type="text/css" />    
+    <script type="text/javascript" src="../../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+    <script src="../../src/jquery.json-2.2.min.js" type="text/javascript"></script>
+    <script src="../../Hotelmgr.js" type="text/javascript"></script>
+    <script src="../../js/jiezhangaction/sankefeiyongaction.js" type="text/javascript"></script>    
+    <script src="../../locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
+</head>
+<body class="easyui-layout">
+    <div region="east" split="true" title="East" class="leftpage buttons">
+        <table>
+            <tr>
+                <td>
+                   <a href="javascript:void(0)" class="positive" onclick="">
+                            <img src="../../css/cashaction/imag/apply2.png" alt="" />
+                            确定</a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                     <a href="javascript:void(0)" class="positive" onclick="">
+                            <img src="../../css/cashaction/imag/apply2.png" alt="" />
+                            取消</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div region="center" border="true" title="" style="border-left: 0px; border-right: 0px;
+        overflow: hidden;">        
+        <div region="center" border="true" title="" split="true">
+            <div class="easyui-tabs">                
+                <div title="客户用品">
+                    <div id="t1" class="datagridgroupby"></div>
+                    <table id="table_kehuyongbing" class="datagridformat">
+                      
+                    </table>
+                </div>
+                <div title="洗衣费">
+                   <div id="Div1" class="datagridgroupby"></div>
+                   <table id="table_xiyifei" class="datagridformat">
+                      
+                    </table>
+                </div>
+                <div title="房间卖品">
+                   <div id="Div2" class="datagridgroupby"></div>
+                   <table id="table_fanjianmaibing" class="datagridformat">
+                      
+                    </table>
+                </div>
+                <div title="其他客房费">
+                   <div id="Div3" class="datagridgroupby"></div>
+                   <table id="table_qitakefanfei" class="datagridformat">
+                      
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

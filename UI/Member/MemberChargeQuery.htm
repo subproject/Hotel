@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>充值记录查询</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css" />
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css" />
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        var dataSaved = false;
+        function myformatter(date) {
+            var y = date.getFullYear();
+            var m = date.getMonth() + 1;
+            var d = date.getDate();
+            return y + '-' + (m < 10 ? ('0' + m) : m) + '-' + (d < 10 ? ('0' + d) : d);
+        }
+        function myparser(s) {
+            if (!s) return new Date();
+            var ss = (s.split('-'));
+            var y = parseInt(ss[0], 10);
+            var m = parseInt(ss[1], 10);
+            var d = parseInt(ss[2], 10);
+            if (!isNaN(y) && !isNaN(m) && !isNaN(d)) {
+                return new Date(y, m - 1, d);
+            } else {
+                return new Date();
+            }
+        }
+        function submitForm() {
+            //$.messager.confirm('Confirm', '确认打印?<br />请确认查询没有错误，点击“确认”打印预览。', function (r) {
+//                if (!r)
+//                    return;  
+                var date = $("#StartTime").combobox("getValue");
+                var date2 = $("#EndTime").datebox("getValue");
+
+                $('#dg').datagrid({ url: 'MemberChargeQueryData.aspx?action=query&starttime=' + "" + date + "" + '&endtime=' + "" + date2 + "" });
+                $.ajax({
+                    type: "post",
+                    url: "MemberChargeQueryData.aspx?action=queryConut",
+                    data: {
+                        starttime: date,
+                        endtime: date2
+                    },
+                    success: function (r) {
+                        var r = eval('(' + r + ')');
+                        var changeMoney = $("#changeMoney");
+                        var Money = $("#Money");                      
+                        changeMoney.val(r.changeMoney);
+                        Money.val(r.Money);
+                    },
+                    error: function (r) {
+                        $.messager.show({// show error message
+                            title: 'Error',
+                            msg: r.errorMsg
+                        });
+                    }
+                });
+         //   });
+            
+        
+        }
+        
+
+        
+        function printOrder() {
+            window.open("MemberChargeQueryPrint.html", "print");
+        }
+        function getPrintData() {
+            var ChargePeople = $("#ChargePeople").val();
+            var changeMoney = $("#changeMoney").val();
+            var Money = $("#Money").val();
+            var StartTime = $("#StartTime").datebox("getValue");
+            var EndTime = $("#EndTime").datebox("getValue");
+            
+            var rows = $("#dg").datagrid("getRows");
+            return {
+                data_1: StartTime,
+                data_2: EndTime,
+                data_3: ChargePeople,
+                data_4: changeMoney,
+                data_5: Money,
+                rows: rows
+            };
+        }
+    </script>
+</head>
+
+
+
+<body class="easyui-layout" style="padding: 2px">
+    <div class="easyui-panel" title="充值记录查询">
+     
+           <div id="ff" style="padding: 10px 10px 10px 10px">
+              <form id="Form1" method="post" runat="server">
+
+            <table >
+                <tr>
+                    <td style="margin-right: 10px">
+                        开始时间:
+                    </td>
+                    <td>
+                        <input class="easyui-datetimebox"  name="StartTime" id="StartTime"> </input>
+                    </td>
+                    
+                </tr>
+                 <tr>
+                    
+                    
+                    <td>
+                        结束时间：
+                    </td>
+                    <td>
+                        <input class="easyui-datetimebox"  name="EndTime" id="EndTime" > </input>
+                    </td>
+                      
+                </tr>
+                 <tr>
+                     
+                      <td style="margin-right: 10px">
+                      收银员:
+                    </td>
+                    <td>
+                           <input class="easyui-combobox" name="ChargePeople" data-options="valueField:'ID',textField:'fkfs',url:'/MemberData.aspx?module=searchsyy&action=read'"/>
+                    <input type="hidden"  name="changeMoney" id="changeMoney"/>
+                                        <input type="hidden"  name="Money" id="Money"/>
+                
+                   </td>
+                </tr>
+            
+                
+            </table> 
+            </form>        
+        </div>
+       <div id="tb" style="height: auto">
+        <a href="javascript:void(0)" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true"
+            onclick="submitForm()">查询</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-remove',plain:true" onclick="window.close()">取消</a>
+        
+        <a href="javascript:void(0)" class="easyui-linkbutton"
+                data-options="iconCls:'icon-print',plain:true"  onclick="printOrder()" id="btnprint">打印</a>
+    </div>
+      <div>
+      
+    <table id="dg" class="easyui-datagrid"  style="height: auto"
+        data-options="iconCls: 'icon-edit',
+        toolbar: '#tb',
+                singleSelect: true">
+        <thead>
+            <tr>
+                <th data-options="field:'name',width:50,align:'center'">
+                    姓名
+                </th>
+ 
+                <th data-options="field:'memberno',width:80,align:'center' ">
+                    会员卡号
+                </th>
+                <th data-options="field:'changemoney',width:80,align:'center'">
+                    充值金额
+                </th>
+                <th data-options="field:'money',width:80,editor:'text',align:'center'">
+                    实收金额
+                </th>
+                <th data-options="field:'paytype',width:80,editor:'text',align:'center'">
+                    付款方式
+                </th>
+                <th data-options="field:'time',width:80,editor:'text',align:'center'"  >
+                    时间
+                </th>
+                <th data-options="field:'bz',width:100,editor:'text',align:'center'">
+                    备注
+                </th>
+            </tr>
+        </thead>
+    </table>
+      </div>
+  </div>
+     
+
+       
+   
+  
+   
+</body>
+</html>

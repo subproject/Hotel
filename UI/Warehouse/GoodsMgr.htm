@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>商品资料管理</title>
+    <link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="../themes/demo.css">
+    <script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="../jquery.easyui.min.js"></script>
+    <script type="text/javascript">
+        var url;
+        var gtTreeUrl = "GoodsMgrData.aspx?action=getTree";
+        var dgUrl = "GoodsMgrData.aspx?action=read&typeid=";
+        var currnodeid = "";
+        var resizeTimeoutId = null;
+        var currdatagrid = "";
+        var heightvalue = 0;
+        var widthvalue = 0;
+        $("document").ready(function () {
+            currdatagrid = "gttree";
+            //开始初化树形表格
+            Intrialization();
+            //查询数据
+            GetTreeData();
+
+            //设置布局层的事件
+            $('.easyui-layout').layout('panel', 'center').panel({
+                onResize: function (width, height) {
+                    window.clearTimeout(resizeTimeoutId);
+                    resizeTimeoutId = window.setTimeout('ViewIntialization();', 10);
+                }
+            });
+            ViewIntialization();
+        });
+
+        function newGoods() {
+            var row = $('#gttree').datagrid('getSelected');
+            if (row) {
+              
+                $('#dlg').dialog('open').dialog('setTitle', '新增商品');
+                $('#fm').form('clear');
+                setDlgGoodsType(true);
+            }
+            url = 'GoodsMgrData.aspx?action=create';
+        }
+        function editGoods() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {              
+                $('#dlg').dialog('open').dialog('setTitle', '编辑商品');
+                $('#fm').form('load', row);
+                setDlgGoodsType(row.IsStoreManage);
+                url = 'GoodsMgrData.aspx?action=update&ID=' + row.ID;
+            }
+        }
+        function saveGoods() {
+            $('#fm').form('submit', {
+                url: url,
+                onSubmit: function () {
+                    return $(this).form('validate');
+                },
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.errorMsg) {
+                        $.messager.show({
+                            title: 'Error',
+                            msg: result.errorMsg
+                        });
+                    } else {
+                        $('#dlg').dialog('close');        // close the dialog
+                        $('#dg').datagrid('reload');    // reload the user data
+                    }
+                }
+            });
+        }
+        function destroyGoods() {
+            var row = $('#dg').datagrid('getSelected');
+            if (row) {
+                $.messager.confirm('Confirm', '确认删除?', function (r) {
+                    if (r) {
+                        $.post('GoodsMgrData.aspx?action=delete', { ID: row.ID }, function (result) {
+                            if (result.success) {
+                                $('#dg').datagrid('reload');    // reload the user data
+                            } else {
+                                $.messager.show({    // show error message
+                                    title: 'Error',
+                                    msg: result.errorMsg
+                                });
+                            }
+                        }, 'json');
+                    }
+                });
+            }
+        }
+
+        function setDlgGoodsType(isStoreManage) {
+            var gtTree = $('#gttree');
+            var goodsType = $("#goodstype");
+            var select = gtTree.treegrid("getSelected")
+            if (select) {
+                $("#goodstype").val(select.TypeName);
+                $("#GoodsTypeid").val(select.id);
+            }
+        }
+        function myformatter(val) {
+            return val ? "是" : "否";
+        }
+        //初始化树形结构
+        function Intrialization() {
+            heightvalue = $('#gttree').parent().parent().parent().parent().height() * 1.3;
+            widthvalue = $('#gttree').parent().parent().parent().parent().width();
+            $('#gttree').treegrid({
+                animate: true,
+                rownumbers: true,
+                animate: true,
+                width: widthvalue,
+                height: heightvalue,
+                idField: 'id',
+                treeField: 'TypeName',
+                showFooter: true,
+                columns: [[
+                     { title: '商品类型', field: 'TypeName', width: 420 }
+                ]],
+                onBeforeEdit: function (rowData) {
+                },
+                onAfterEdit: function (rowData, changes) {
+                },
+                onCancelEdit: function (rowData) {
+
+                },
+                onSelect: function (rowData) {
+                    currdatarow = rowData;
+                    var url = dgUrl + rowData.id;
+                    $('#dg').datagrid({ url: url });
+                },
+                onBeforeExpand: function (rowData) {
+
+                },
+                onCollapse: function (rowData) {
+
+                },
+                onExpand: function (rowdata) {
+
+                },
+                onLoadSuccess: function (row, data) {
+                    if (currnodeid) {
+                        $('#dg').treegrid('select', currnodeid);
+                        currnodeid = null;
+                    }
+                }
+            });
+        }
+        //获取数据
+        function GetTreeData() {
+            //发送Post请求, 返回后执行回调函数.
+            var paramdata = { "action": 'read' };
+            var Urlstr = "GoodsTypeMgrData.aspx";
+            $("#gttree").treegrid("loading");
+            $.post(Urlstr, paramdata,
+               function (data, textStatus) {
+                   try {
+                       dataArray = [eval("(" + data + ")")];
+                       $("#gttree").treegrid("loadData", { rows: dataArray[0].Rows });
+
+                   }
+                   catch (e) {
+                       alert(e);
+                   }
+                   $("#gttree").treegrid("loaded");
+               },
+         "text");
+           }
+           //获取数据
+           function GetComberTreeData() {
+               //发送Post请求, 返回后执行回调函数.
+               var paramdata = { "action": 'comboxread' };
+               var Urlstr = "GoodsTypeMgrData.aspx";
+               $.post(Urlstr, paramdata,
+               function (data, textStatus) {
+                   try {
+                       dataArray = [eval("(" + data + ")")];
+                       $("#goodstype").combotree("loadData", { rows: dataArray[0].Rows });
+                   }
+                   catch (e) {
+                       alert(e);
+                   }
+               },
+         "text");
+           }
+        //界面布局调整初始化
+        function ViewIntialization() {
+            //设置费用明细的长度和宽度
+            var currtableid = "#" + currdatagrid;
+            heightvalue = $(currtableid).parent().parent().parent().parent().height();
+            widthvalue = $(currtableid).parent().parent().parent().parent().width();
+            var dgwidth = $('#dg').parent().parent().parent().parent().width();
+            $(currtableid).treegrid('resize', { width: widthvalue, height: heightvalue });
+            $('#dg').datagrid('resize', { width: dgwidth, height: heightvalue });
+        }
+    </script>
+    <style type="text/css">
+        #fm
+        {
+            margin: 0;
+            padding: 10px 30px;
+        }
+        .ftitle
+        {
+            font-size: 14px;
+            font-weight: bold;
+            padding: 5px 0;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .fitem
+        {
+            margin-bottom: 5px;
+        }
+        .fitem label
+        {
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+</head>
+<body class="easyui-layout">
+    <div data-options="region:'west',split:true" title="商品类别" style="width: 300px;">
+        <input id="gttree" class="easyui-treegrid" data-options="required:true" style="width: 300px;">
+    </div>
+    <div data-options="region:'center',title:'商品信息',iconCls:'icon-ok'">
+        <table id="dg" class="easyui-datagrid" toolbar="#toolbar" pagination="true" rownumbers="true"
+            fitcolumns="true" singleselect="true">
+            <thead>
+                <tr>
+                    <th data-options="field:'ID',width:80,align:'center'"">
+                        系统编号
+                    </th>
+                    <th data-options="field:'GoodsName',width:80,align:'center'"">
+                        商品名称
+                    </th>
+                    <th data-options="field:'GoodsTypeName',width:80,align:'center'">
+                        商品种类
+                    </th>
+                    <th data-options="field:'GoodsSimple',width:80,align:'center'">
+                        商品简称
+                    </th>
+                    <th data-options="field:'GoodsStyle',width:80,align:'center'">
+                        规格类别
+                    </th>
+                    <th data-options="field:'Unit',width:80,align:'center'"" >
+                        计量单位
+                    </th>
+                    <th data-options="field:'SalePrice',width:80,align:'center'">
+                        售价
+                    </th>
+                    <th data-options="field:'IsStoreManage',width:80,align:'center',formatter:myformatter,editor:{type:'checkbox',options:{on:'true',off:'false'}}">
+                        是否库存管理
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div id="toolbar">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-add" plain="true"
+                onclick="newGoods()">新增</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+                    iconcls="icon-edit" plain="true" onclick="editGoods()">修改</a> <a href="javascript:void(0)"
+                        class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="destroyGoods()">
+                        删除</a>
+        </div>
+        <div id="dlg" class="easyui-dialog" style="width: 400px; height: 280px; padding: 10px 20px"
+            closed="true" buttons="#dlg-buttons">
+            <div class="ftitle">
+                商品信息</div>
+            <!--新增商品信息-->
+            <form id="fm" method="post" novalidate>
+            <div class="fitem">
+                <label>
+                    商品名称:</label>
+                <input name="GoodsName" class="easyui-validatebox" required="true">
+            </div>
+            <div class="fitem">
+                <label>
+                    商品种类:</label>
+                <input id="goodstype"  name="GoodsType" class="easyui-validatebox"
+                    required="true">
+            </div>
+            <div class="fitem">
+                <label>
+                    规格类别:</label>
+                <input id="goodsStyle" name="GoodsStyle" class="easyui-validatebox" required="true">
+            </div>
+            <div class="fitem">
+                <label>
+                    计量单位:</label>
+                <input name="Unit" class="easyui-validatebox" required="true">
+            </div>
+            <div class="fitem">
+                <label>
+                    售价:</label>
+                <input name="SalePrice" class="easyui-numberbox" data-options="min:0,precision:2"
+                    required="true">
+            </div>
+            <div class="fitem">
+                <label>
+                    是否库存管理:</label>
+                <input id="isstoremanage" name="IsStoreManage" class="easyui-combobox" required="true"
+                    editable="false" data-options="data:[{text:'是',value:'true'},{text:'否',value:'false'}]" />
+            </div>
+            <div class="fitem">
+                <input id="GoodsTypeid" style="visibility: hidden;" name="GoodsTypeid" class="easyui-validatebox"
+                    required="true">
+            </div>
+            </form>
+        </div>
+        <div id="dlg-buttons">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-ok" onclick="saveGoods()">
+                保存</a> <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-cancel"
+                    onclick="javascript:$('#dlg').dialog('close')">退出</a>
+        </div>
+    </div>
+</body>
+</html>

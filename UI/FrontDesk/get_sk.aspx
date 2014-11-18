@@ -1,0 +1,1 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="get_sk.aspx.cs" Inherits="FrontDesk_get_sk" %>

@@ -1,0 +1,259 @@
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\bin\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\bin\Debug\HotelEntities.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\obj\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0125\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0125\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0125\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0125\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0125\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0125\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0125\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0217\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0217\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0217\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelEntities.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0217\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0217\UI_完全整合版本0217\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0217\UI_完全整合版本0217\HotelLogic\obj\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本0217\UI_完全整合版本0217\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\OK\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\OK\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\OK\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelLogic.dll
+F:\OK\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\OK\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelEntities.dll
+F:\OK\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\OK\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\obj\Debug\HotelLogic.dll
+F:\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\obj\Debug\HotelLogic.dll
+F:\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelLogic.dll
+F:\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelEntities.dll
+F:\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\备份\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelLogic.dll
+F:\备份\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\备份\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelEntities.dll
+F:\备份\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\备份\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\备份\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\obj\Debug\HotelLogic.dll
+F:\备份\2-25\UI_完全整合版本0218\UI_完全整合版本0217\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_02\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_02\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_02\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelEntities.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_02\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_02\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_02\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\obj\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_02\UI_完全整合版本3-5_01\UI_完全整合版本0217\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_03\UI_完全整合版本3-5_02\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_03\UI_完全整合版本3-5_02\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_03\UI_完全整合版本3-5_02\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_03\UI_完全整合版本3-5_02\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_03\UI_完全整合版本3-5_02\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_03\UI_完全整合版本3-5_02\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-5_03\UI_完全整合版本3-5_02\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-6\UI_完全整合版本3-6\UI_完全整合版本3-5_02\HotelLogic\bin\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-6\UI_完全整合版本3-6\UI_完全整合版本3-5_02\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-6\UI_完全整合版本3-6\UI_完全整合版本3-5_02\HotelLogic\bin\Debug\HotelEntities.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-6\UI_完全整合版本3-6\UI_完全整合版本3-5_02\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-6\UI_完全整合版本3-6\UI_完全整合版本3-5_02\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-6\UI_完全整合版本3-6\UI_完全整合版本3-5_02\HotelLogic\obj\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\UI_完全整合版本3-6\UI_完全整合版本3-6\UI_完全整合版本3-5_02\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\UI_完全整合版本3-6\HotelLogic\bin\Debug\HotelLogic.dll
+F:\UI_完全整合版本3-6\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\UI_完全整合版本3-6\HotelLogic\bin\Debug\HotelEntities.dll
+F:\UI_完全整合版本3-6\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\UI_完全整合版本3-6\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\UI_完全整合版本3-6\HotelLogic\obj\Debug\HotelLogic.dll
+F:\UI_完全整合版本3-6\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\svn\branches\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\酒店\新建文件夹\HotelManagerByHuaibao\svn\branches\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\svn\branches\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\svn\branches\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\svn\branches\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\svn\branches\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\svn\branches\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+C:\Documents and Settings\Administrator\桌面\ui\HotelLogic\bin\Debug\HotelLogic.dll
+C:\Documents and Settings\Administrator\桌面\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+C:\Documents and Settings\Administrator\桌面\ui\HotelLogic\bin\Debug\HotelEntities.dll
+C:\Documents and Settings\Administrator\桌面\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+C:\Documents and Settings\Administrator\桌面\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\ui\HotelLogic\obj\Debug\HotelLogic.dll
+C:\Documents and Settings\Administrator\桌面\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+C:\Documents and Settings\Administrator\桌面\新建文件夹\HotelLogic\bin\Debug\HotelLogic.dll
+C:\Documents and Settings\Administrator\桌面\新建文件夹\HotelLogic\bin\Debug\HotelLogic.pdb
+C:\Documents and Settings\Administrator\桌面\新建文件夹\HotelLogic\bin\Debug\HotelEntities.dll
+C:\Documents and Settings\Administrator\桌面\新建文件夹\HotelLogic\bin\Debug\HotelEntities.pdb
+C:\Documents and Settings\Administrator\桌面\新建文件夹\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\新建文件夹\HotelLogic\obj\Debug\HotelLogic.dll
+C:\Documents and Settings\Administrator\桌面\新建文件夹\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0313\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0313\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0313\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0313\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0313\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0313\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0313\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\酒店\新建文件夹\branches0314\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\酒店\新建文件夹\branches0314\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\酒店\新建文件夹\branches0314\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\酒店\新建文件夹\branches0314\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\酒店\新建文件夹\branches0314\branches0314\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\酒店\新建文件夹\branches0314\branches0314\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\酒店\新建文件夹\branches0314\branches0314\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0315\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0315\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0315\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0315\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0315\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0315\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0315\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\branches0316\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\文档\新建文件夹\branches0316\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\branches0316\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\branches0316\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\branches0316\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\文档\新建文件夹\branches0316\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\文档\新建文件夹\branches0316\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0317\branches0317\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0317\branches0317\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0317\branches0317\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0317\branches0317\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0317\branches0317\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0317\branches0317\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\branches0317\branches0317\branches0316\branches0315\branches0314\branches0312\branches0310\branches\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0317\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0317\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0317\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\文档\新建文件夹\ui0317\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\文档\新建文件夹\ui0317\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\文档\新建文件夹\ui0317\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0317\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0318\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0318\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0318\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\文档\新建文件夹\ui0318\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\文档\新建文件夹\ui0318\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\文档\新建文件夹\ui0318\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0318\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0319\ui0318\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0319\ui0318\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0319\ui0318\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0319\ui0318\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0319\ui0318\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0319\ui0318\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0319\ui0318\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\文档\新建文件夹\ui0320\ui0320\ui0318\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0320\ui0320\ui0318\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0320\ui0320\ui0318\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\文档\新建文件夹\ui0320\ui0320\ui0318\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\文档\新建文件夹\ui0320\ui0320\ui0318\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\文档\新建文件夹\ui0320\ui0320\ui0318\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0320\ui0320\ui0318\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0321\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0321\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0321\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0321\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0321\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0321\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0321\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0322\ui0322\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0322\ui0322\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0322\ui0322\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\文档\新建文件夹\ui0322\ui0322\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\文档\新建文件夹\ui0322\ui0322\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\文档\新建文件夹\ui0322\ui0322\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0322\ui0322\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0323\ui0322\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0323\ui0322\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0323\ui0322\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0323\ui0322\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0323\ui0322\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0323\ui0322\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0323\ui0322\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0326\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0326\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0326\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\文档\新建文件夹\ui0326\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\文档\新建文件夹\ui0326\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\文档\新建文件夹\ui0326\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0326\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0402\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0402\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0402\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\文档\新建文件夹\ui0402\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\文档\新建文件夹\ui0402\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\文档\新建文件夹\ui0402\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0402\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0403\ui0403\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0403\ui0403\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0403\ui0403\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0403\ui0403\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0403\ui0403\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0403\ui0403\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\酒店\新建文件夹\HotelManagerByHuaibao\ui0403\ui0403\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0404\ui0404\ui0403\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0404\ui0404\ui0403\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0404\ui0404\ui0403\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\文档\新建文件夹\ui0404\ui0404\ui0403\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\文档\新建文件夹\ui0404\ui0404\ui0403\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\文档\新建文件夹\ui0404\ui0404\ui0403\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0404\ui0404\ui0403\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0405\ui0404\ui0403\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0405\ui0404\ui0403\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0405\ui0404\ui0403\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\文档\新建文件夹\ui0405\ui0404\ui0403\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\文档\新建文件夹\ui0405\ui0404\ui0403\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\文档\新建文件夹\ui0405\ui0404\ui0403\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0405\ui0404\ui0403\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0408\ui0404\ui0403\ui\HotelLogic\bin\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0408\ui0404\ui0403\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+F:\sample\文档\新建文件夹\ui0408\ui0404\ui0403\ui\HotelLogic\bin\Debug\HotelEntities.dll
+F:\sample\文档\新建文件夹\ui0408\ui0404\ui0403\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+F:\sample\文档\新建文件夹\ui0408\ui0404\ui0403\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+F:\sample\文档\新建文件夹\ui0408\ui0404\ui0403\ui\HotelLogic\obj\Debug\HotelLogic.dll
+F:\sample\文档\新建文件夹\ui0408\ui0404\ui0403\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+C:\Users\安卓开发\14.4.14\ui0413\ui0409\ui\HotelLogic\bin\Debug\HotelLogic.dll
+C:\Users\安卓开发\14.4.14\ui0413\ui0409\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+C:\Users\安卓开发\14.4.14\ui0413\ui0409\ui\HotelLogic\bin\Debug\HotelEntities.dll
+C:\Users\安卓开发\14.4.14\ui0413\ui0409\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+C:\Users\安卓开发\14.4.14\ui0413\ui0409\ui\HotelLogic\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\安卓开发\14.4.14\ui0413\ui0409\ui\HotelLogic\obj\Debug\HotelLogic.dll
+C:\Users\安卓开发\14.4.14\ui0413\ui0409\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+D:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\bin\Debug\HotelLogic.dll
+D:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+D:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\bin\Debug\HotelEntities.dll
+D:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+D:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\obj\Debug\HotelLogic.csprojResolveAssemblyReference.cache
+D:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\obj\Debug\HotelLogic.dll
+D:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+G:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\bin\Debug\HotelLogic.dll
+G:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\bin\Debug\HotelLogic.pdb
+G:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\bin\Debug\HotelEntities.dll
+G:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\bin\Debug\HotelEntities.pdb
+G:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\obj\Debug\HotelLogic.csprojResolveAssemblyReference.cache
+G:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\obj\Debug\HotelLogic.dll
+G:\My Resoure\myweb\myweb\ui0413\ui0409\ui\HotelLogic\obj\Debug\HotelLogic.pdb
+E:\GitRep\Hotel\HotelLogic\bin\Debug\HotelLogic.dll
+E:\GitRep\Hotel\HotelLogic\bin\Debug\HotelLogic.pdb
+E:\GitRep\Hotel\HotelLogic\bin\Debug\HotelEntities.dll
+E:\GitRep\Hotel\HotelLogic\bin\Debug\HotelEntities.pdb
+E:\GitRep\Hotel\HotelLogic\obj\Debug\HotelLogic.csprojResolveAssemblyReference.cache
+E:\GitRep\Hotel\HotelLogic\obj\Debug\HotelLogic.dll
+E:\GitRep\Hotel\HotelLogic\obj\Debug\HotelLogic.pdb

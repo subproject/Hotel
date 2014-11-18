@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>前台接洽</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../themes/demo.css">
+	<script type="text/javascript" src="../jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+</head>
+<body  class="easyui-layout">
+	<div data-options="region:'west',split:true" style="width:150px;padding:10px;">
+        <p style="font-weight:bolder">选择客人信息：</p>
+    	<input class="easyui-combobox" style="width:120px" data-options="valueField:'id',textField:'text'">
+        <p style="height:30px">&nbsp;</p>
+        <button style="margin:2px;width:120px;height:30px">增加房卡</button>
+        <button style="margin:2px;width:120px;height:30px">减少房卡</button>
+        <button style="margin:2px;width:120px;height:30px">重新刷卡</button>
+        <button style="margin:2px;width:120px;height:30px">打印</button>
+        <button style="margin:2px;width:120px;height:30px">打印同住信息</button>
+        <button style="margin:2px;width:120px;height:30px">在店查询</button>
+        <button style="margin:2px;width:120px;height:30px">客史查询</button>
+        <button style="margin:2px;width:120px;height:30px">保存接洽</button>
+        <button style="margin:2px;width:120px;height:30px">修改接洽</button>
+        <button style="margin:2px;width:120px;height:30px">预订拷贝</button>
+        <button style="margin:2px;width:120px;height:30px">换房</button>
+        <button style="margin:2px;width:120px;height:30px">续住</button>
+        <button style="margin:2px;width:120px;height:30px">取消</button>
+    </div>
+	<div data-options="region:'center'" style="padding:5px">
+    <!--客户信息-->
+    <div class="easyui-tabs" style="width:700px;height:550px">
+		<div title="主要信息" style="padding:10px">
+            <table>
+	    		<tr>
+	    			<td style="width:80px; margin-right:10px">客户名称</td>
+	    			<td style="width:220px;"><input class="easyui-validatebox" type="text" name="name" data-options="required:true"></input></td>
+	    			<td style="width:80px;">会员卡</td>
+	    			<td style="width:220px;"><input class="easyui-validatebox" type="text" name="name"></input></td>
+                </tr>
+	    		<tr>
+	    			<td>客户类型</td>
+	    			<td>
+	    				<select class="easyui-combobox" name="language" style="width:140px">
+                            <option value="ar">散客</option>
+                            <option value="bg">团队</option>
+                            <option value="ca">会议</option>
+                            <option value="zh-cht">旅行社</option>
+                            <option value="cs">其他</option></select>
+	    			</td>
+                    <td>国籍</td>
+	    			<td>
+	    				<select class="easyui-combobox" name="language" style="width:140px">
+                            <option value="ar">中国</option>
+                            <option value="bg">美国</option>
+                            <option value="ca">法国</option>
+                            <option value="zh-cht">德国</option>
+                            <option value="cs">俄罗斯</option>
+                            <option value="da">其他</option></select>
+	    			</td>
+                </tr>
+	    		<tr>
+	    			<td>抵达时间</td>
+	    			<td><input class="easyui-datetimebox" required style="width:140px"></td>
+                    <td>离店时间</td>
+	    			<td><input class="easyui-datetimebox" required style="width:140px"></td>   		
+                </tr>
+	    		<tr>
+	    			<td>客户人数</td>
+	    			<td><input class="easyui-validatebox" type="text" name="name"></input></td>
+	    			<td>协议单位</td>
+	    			<td>
+	    				<select class="easyui-combobox" name="language" style="width:140px">
+                            <option value="ar">满座团购</option>
+                            <option value="bg">嘀嗒团购</option></select>
+	    			</td>
+	    		</tr>
+                <tr>
+	    			<td>特权人</td>
+	    			<td>
+	    				<select class="easyui-combobox" name="language" style="width:140px">
+                        </select>
+	    			</td>
+                    <td>折扣</td>
+                    <td><input class="easyui-validatebox" type="text" name="name"></input>%</td>			
+	    		</tr>
+	    	</table>
+            <table class="easyui-datagrid" title="选择房间" style="width:700px;height:150px">
+		        <thead>
+			        <tr>
+				        <th data-options="field:'ck',checkbox:true"></th>
+				        <th data-options="field:'itemid',width:180">房号</th>
+				        <th data-options="field:'productid',width:180">房间类型</th>
+				        <th data-options="field:'listprice',width:180">房价</th>
+				        <th data-options="field:'unitcost',width:180">状态</th>
+			        </tr>
+		        </thead>
+	        </table>
+            <table>
+                <tr>
+                    <td></td>
+                    <td><button style="margin:5px;width:120px;height:30px">连房录入</button></td>
+                </tr>
+            </table>
+		</div>
+		<div title="随客信息" style="padding:10px">
+
+		</div>
+	</div>
+    </div>
+</body>
+</html>
